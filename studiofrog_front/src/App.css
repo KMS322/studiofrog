@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "SegoeUI";
+  letter-spacing: 0vw;
+}
+ul li {
+  list-style: none;
+}
+body {
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+p {
+  color: #1e1e1c;
+  line-height: 1;
+  font-weight: 400;
+}
+@media (max-width: 500px) {
+  #pc {
+    display: none;
+  }
+  #mobile {
+    display: block;
+  }
+}

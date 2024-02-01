@@ -1,0 +1,128 @@
+/* about_s1 */
+.about_s1 {
+  width: 56.67%;
+  height: 59.48vw;
+  margin: 0 auto;
+}
+.about_s1 > p {
+  font-size: 1.3vw;
+  font-weight: 600;
+  margin-top: 2.34vw;
+}
+.about_s1 .text_box {
+  width: 100%;
+  height: 7.01%;
+  margin-top: 5.36vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.about_s1 .text_box > p {
+  font-size: 1.82vw;
+  font-weight: 900;
+}
+.about_s1 .text_box .change_box {
+  width: 45.96%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.26vw solid #8f63da;
+}
+.about_s1 .text_box .change_box p {
+  font-size: 2.34vw;
+  font-weight: 900;
+  color: #8f63da;
+}
+.about_s1 .video_box {
+  width: 100%;
+  height: 53.42%;
+  position: relative;
+  margin-top: 2.03vw;
+}
+.about_s1 .video_box img {
+  width: 100%;
+  height: 100%;
+}
+.about_s1 .video_box img:nth-child(2) {
+  width: 6.05vw;
+  height: 6.05vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+/* about_s2 */
+.about_s2 {
+  width: 56.67%;
+  height: 47.08vw;
+  margin: 0 auto;
+}
+.about_s2 > p {
+  font-size: 1.04vw;
+  font-weight: 700;
+  line-height: 2vw;
+}
+.about_s2 .article_container {
+  width: 100%;
+  height: 62.17%;
+  margin-top: 1.82vw;
+  border-top: 1px solid #d4d4d4;
+}
+.about_s2 .article_container .article {
+  width: 100%;
+  height: 33.33%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d4d4d4;
+}
+.about_s2 .article_container .article img {
+  width: 5.68vw;
+  margin-left: 2.34vw;
+}
+.about_s2 .article_container .article p:nth-child(2) {
+  width: 9%;
+  font-size: 1.82vw;
+  font-weight: 700;
+  color: #8f63da;
+  margin-left: 4.69vw;
+}
+.about_s2 .article_container .article p:nth-child(3) {
+  font-size: 0.78vw;
+  font-weight: 700;
+  margin-left: 3.91vw;
+}
+
+/* about_s3 */
+.about_s3 {
+  width: 100%;
+  height: 74.38vw;
+}
+.about_s3 .article_container {
+  width: 56.67%;
+  height: 17.58%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.about_s3 .article_container > p {
+  font-size: 1.56vw;
+  font-weight: 700;
+}
+.about_s3 .article_container .img_box_container {
+  width: 100%;
+  height: 70.12%;
+  margin-top: 1.41vw;
+}
+.about_s3 .article_container .img_box_container img {
+  width: 12.13%;
+  height: 32.95%;
+}
+.about_s3 > img {
+  width: 100%;
+  height: fit-content;
+  margin-top: 10.42vw;
+}

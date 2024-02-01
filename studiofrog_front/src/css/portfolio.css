@@ -1,0 +1,96 @@
+/* portfolio */
+.portfolio {
+  width: 56.67%;
+  /* height: 125vw; */
+  height: auto;
+  margin: 0 auto;
+}
+.portfolio > p {
+  font-size: 1.3vw;
+  font-weight: 600;
+}
+.portfolio .text_box {
+  width: 100%;
+  height: 4.17vw;
+  margin-top: 5.36vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.portfolio .text_box > p {
+  font-size: 1.82vw;
+  font-weight: 900;
+}
+.portfolio .text_box .change_box {
+  width: 45.96%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.26vw solid #8f63da;
+}
+.portfolio .text_box .change_box p {
+  font-size: 2.34vw;
+  font-weight: 900;
+  color: #8f63da;
+}
+.portfolio > p:nth-child(3) {
+  font-size: 0.78vw;
+  font-weight: 700;
+  margin-top: 6.67vw;
+  color: #8f63da;
+}
+.portfolio .hash_box {
+  width: 100%;
+  margin-top: 1.04vw;
+  display: flex;
+  justify-content: space-between;
+}
+.portfolio .hash_box p {
+  font-size: 0.78vw;
+}
+.portfolio .article_container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2.86vw;
+}
+.portfolio .article_container .article {
+  width: 31.53%;
+  height: 16.82vw;
+}
+.portfolio .article_container .article img {
+  width: 100%;
+  height: 59.75%;
+}
+.portfolio .article_container .article p {
+  width: 100%;
+  height: 12.38%;
+  text-align: center;
+}
+.portfolio .article_container .article p:nth-child(2) {
+  margin-top: 0.94vw;
+  color: #707070;
+}
+.portfolio .article_container .article p:nth-child(3) {
+  font-size: 1.56vw;
+  font-weight: 900;
+}
+.portfolio .btn_box {
+  width: 9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 5.21vw;
+  margin-bottom: 28.07vw;
+  cursor: pointer;
+}
+.portfolio .btn_box p {
+  font-size: 0.78vw;
+}
+.portfolio .btn_box img {
+  width: 0.78vw;
+}
