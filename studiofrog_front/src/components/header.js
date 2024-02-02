@@ -1,8 +1,10 @@
 import "../css/header.css";
+import "../css/header_mobile.css";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Header = ({ page }) => {
-  console.log("page : ", page);
   const navigate = useNavigate();
+  const [openNav, setOpenNav] = useState(false);
   return (
     <div className="header">
       <img
@@ -13,6 +15,7 @@ const Header = ({ page }) => {
         }}
       />
       <p
+        id="pc"
         onClick={() => {
           navigate("/about");
         }}
@@ -21,6 +24,7 @@ const Header = ({ page }) => {
         ABOUT
       </p>
       <p
+        id="pc"
         onClick={() => {
           navigate("/portfolio");
         }}
@@ -28,10 +32,16 @@ const Header = ({ page }) => {
       >
         PORTFOLIO
       </p>
-      <a href="HTTPS://AUTORO.KR" target="_self" rel="noopener noreferrer">
+      <a
+        id="pc"
+        href="HTTPS://AUTORO.KR"
+        target="_self"
+        rel="noopener noreferrer"
+      >
         <p>AUTORO</p>
       </a>
       <p
+        id="pc"
         onClick={() => {
           navigate("/contact");
         }}
@@ -39,6 +49,45 @@ const Header = ({ page }) => {
       >
         CONTACT
       </p>
+      <img
+        id="mobile"
+        src="/images/menu_btn.png"
+        alt=""
+        onClick={() => {
+          setOpenNav(!openNav);
+        }}
+      />
+      {openNav ? (
+        <div id="mobile" className="mobile_nav">
+          <p
+            onClick={() => {
+              navigate("/about");
+            }}
+          >
+            ABOUT
+          </p>
+          <p
+            onClick={() => {
+              navigate("/portfolio");
+            }}
+          >
+            PORTFOLIO
+          </p>
+          <a href="HTTPS://AUTORO.KR" target="_self" rel="noopener noreferrer">
+            <p>AUTORO</p>
+          </a>
+          <p
+            onClick={() => {
+              navigate("/contact");
+            }}
+          >
+            CONTACT
+          </p>
+        </div>
+      ) : (
+        ""
+      )}
+      {openNav ? <div id="mobile" className="black"></div> : ""}
     </div>
   );
 };

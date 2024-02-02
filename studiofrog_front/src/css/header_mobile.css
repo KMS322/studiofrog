@@ -1,0 +1,44 @@
+@media screen and (max-width: 500px) {
+  /* header */
+  .header {
+    height: 16.67vw;
+    justify-content: space-between;
+    position: relative;
+  }
+  .header img:nth-child(1) {
+    width: 20.83%;
+    margin-left: 4.17vw;
+  }
+  .header img#mobile {
+    width: 6.25%;
+    margin-right: 4.17vw;
+  }
+  .header .mobile_nav {
+    width: 30.42%;
+    height: 100vh;
+    position: absolute;
+    top: 16.67vw;
+    right: 0;
+    background-color: white;
+    z-index: 3;
+  }
+  .header .mobile_nav p {
+    font-size: 3.13vw;
+    margin: 0;
+    margin-right: 4.17vw;
+    margin-bottom: 11.88vw;
+    text-align: right;
+  }
+  .header .mobile_nav p:first-child {
+    margin-top: 6.88vw;
+  }
+  .header .black {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 16.67vw;
+    left: 0;
+    z-index: 2;
+    background-color: #d4d4d4;
+  }
+}
