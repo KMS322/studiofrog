@@ -176,7 +176,12 @@ const ContactS1 = () => {
                 </p>
               </div>
             </label>
-            <input name="file" type="file" onChange={handleFileChange} />
+            <input
+              id="file"
+              name="file"
+              type="file"
+              onChange={handleFileChange}
+            />
           </div>
           <div className="textarea_box">
             <p>
