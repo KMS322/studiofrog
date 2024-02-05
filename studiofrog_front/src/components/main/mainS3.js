@@ -1,6 +1,38 @@
+import React, { useRef, useEffect } from "react";
 const MainS3 = () => {
+  const tagRef1 = useRef(null);
+  const tagRef2 = useRef(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const triggerPosition = (80 * window.innerWidth) / 100; // 120vw in pixels
+
+      if (
+        scrollPosition >= triggerPosition &&
+        tagRef1.current &&
+        tagRef2.current
+      ) {
+        tagRef1.current.classList.add("animate1");
+        tagRef2.current.classList.add("animate2");
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className="main_s3">
+      <img
+        className="left_logo"
+        src="/images/animation_logo.png"
+        alt=""
+        ref={tagRef1}
+      />
       <div className="article_container">
         <div className="article">
           <p>MEDIA WORK</p>
@@ -75,6 +107,12 @@ const MainS3 = () => {
           </div>
         </div>
       </div>
+      <img
+        className="right_logo"
+        src="/images/animation_logo2.png"
+        alt=""
+        ref={tagRef2}
+      />
     </div>
   );
 };

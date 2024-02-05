@@ -1,10 +1,20 @@
+import React from "react";
 const AboutS3 = () => {
+  const importAll = (r) => {
+    return r.keys().map(r);
+  };
+
+  const images = importAll(
+    require.context("../../../public/logos/", false, /\.(png|jpe?g|svg)$/)
+  );
   return (
     <div className="about_s3">
       <div className="article_container">
         <p>Our Clients</p>
         <div className="img_box_container">
-          <img src="/images/main_s4_img1.jpg" alt="" />
+          {images.map((image, index) => (
+            <img key={index} src={image} alt={`Client Logo ${index}`} />
+          ))}
         </div>
       </div>
 

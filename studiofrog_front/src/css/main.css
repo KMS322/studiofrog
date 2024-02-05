@@ -51,11 +51,50 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+.main_s3 > img {
+  width: 12.42vw;
+  height: 3.65vw;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.main_s3 > .left_logo {
+  top: 0;
+  left: 0;
+}
+.main_s3 > .animate1 {
+  animation: moveTop 3s ease forwards;
+}
+@keyframes moveTop {
+  from {
+    top: 0;
+  }
+  to {
+    top: 48.43vw;
+  }
+}
+.main_s3 > .right_logo {
+  bottom: 0;
+  right: 0;
+}
+.main_s3 > .animate2 {
+  animation: moveBottom 3s ease forwards;
+}
+@keyframes moveBottom {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 48.43vw;
+  }
 }
 .main_s3 .article_container {
   width: 67.71%;
   height: 56.2%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .main_s3 .article_container .article {
@@ -65,7 +104,12 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
+  /* transition: all 0.3s ease; */
 }
+/* .main_s3 .article_container .article:hover {
+  width: 40%;
+  height: 110%;
+} */
 .main_s3 .article_container .article > p {
   font-size: 1.82vw;
   font-weight: 900;
@@ -179,9 +223,25 @@
   height: 53.5%;
   display: flex;
   margin-top: 2.6vw;
+  overflow-x: scroll;
+}
+.main_s4 .article_container .article .scroll_container::-webkit-scrollbar {
+  height: 0.26vw;
+}
+.main_s4
+  .article_container
+  .article
+  .scroll_container::-webkit-scrollbar-thumb {
+  background-color: #8f63da;
+}
+.main_s4
+  .article_container
+  .article
+  .scroll_container::-webkit-scrollbar-track {
+  background-color: #c9c9c9;
 }
 .main_s4 .article_container .article .scroll_container .video_box_container {
-  width: 100%;
+  width: auto;
   height: 77.78%;
   display: flex;
 }
@@ -191,8 +251,17 @@
   .scroll_container
   .video_box_container
   .video_box {
-  width: 23.9%;
+  width: 13.54vw;
   height: 100%;
+  margin-right: 0.83vw;
+}
+.main_s4
+  .article_container
+  .article
+  .scroll_container
+  .video_box_container
+  .video_box:last-child {
+  margin-right: 0;
 }
 .main_s4
   .article_container
