@@ -1,12 +1,20 @@
 const AboutS2 = () => {
   return (
     <div className="about_s2">
-      <p>
+      <p id="pc">
         안녕하세요.
         <br />
         스튜디오프로그는 많은 영상들이 만들어지고 필요해지는 지금
         <br />
         진심을 담아 상담하고 편안한 업무과정에 만족할 수 있도록 노력하겠습니다.
+      </p>
+      <p id="mobile">
+        안녕하세요.
+        <br />
+        <br />
+        스튜디오프로그는 많은 영상들이 만들어지고 <br />
+        필요해지는 지금 진심을 담아 상담하고 편안한 업무과정에 <br />
+        만족할 수 있도록 노력하겠습니다.
       </p>
       <div className="article_container">
         <div className="article">

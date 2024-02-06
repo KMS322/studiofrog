@@ -37,7 +37,7 @@
   font-size: 0.78vw;
   font-weight: 700;
 }
-.contact_s1 .article_container .sub_container .input_box p span {
+.contact_s1 .article_container .sub_container .input_box p sup {
   color: #8f63da;
 }
 .contact_s1 .article_container .sub_container .input_box select {
@@ -117,6 +117,7 @@
   background-color: #f3f3f3;
   padding: 0.52vw;
   font-size: 0.62vw;
+  border: none;
 }
 .contact_s1 .check_box {
   width: 71.69%;

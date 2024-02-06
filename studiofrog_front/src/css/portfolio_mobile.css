@@ -1,0 +1,68 @@
+@media screen and (max-width: 500px) {
+  /* portfolio */
+  .portfolio {
+    width: 90%;
+    height: auto;
+  }
+  .portfolio > p {
+    font-size: 3.5vw;
+  }
+  .portfolio .text_box {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .portfolio .text_box > p {
+    font-size: 6vw;
+  }
+  .portfolio .text_box .change_box {
+    width: 100%;
+    height: 20vw;
+    border-width: 2vw;
+    margin-top: 8vw;
+    margin-bottom: 8vw;
+  }
+  .portfolio .text_box .change_box p {
+    font-size: 11vw;
+  }
+  .portfolio > p:nth-child(3) {
+    font-size: 3.5vw;
+  }
+  .portfolio .hash_box {
+    height: auto;
+    flex-wrap: wrap;
+    margin-top: 5vw;
+  }
+  .portfolio .hash_box p {
+    width: 33.33%;
+    height: 7vw;
+    font-size: 3vw;
+  }
+  .portfolio .article_container {
+    margin-top: 10vw;
+  }
+  .portfolio .article_container .article {
+    width: 100%;
+    height: 80vw;
+    margin-bottom: 10vw;
+  }
+  .portfolio .article_container .article:last-child {
+    margin-bottom: 0vw;
+  }
+  .portfolio .article_container .article p:nth-child(2) {
+    font-size: 4vw;
+    margin-top: 5vw;
+  }
+  .portfolio .article_container .article p:nth-child(3) {
+    font-size: 7vw;
+  }
+  .portfolio .btn_box {
+    width: 25%;
+  }
+  .portfolio .btn_box p {
+    font-size: 3.5vw;
+  }
+  .portfolio .btn_box img {
+    width: 3.5vw;
+  }
+}

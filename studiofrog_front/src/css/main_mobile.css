@@ -1,0 +1,222 @@
+@media screen and (max-width: 500px) {
+  /* main_s1 */
+  .main_s1 {
+    height: 50vw;
+  }
+  /* main_s2 */
+  .main_s2 {
+    height: 40vw;
+  }
+  .main_s2 p {
+    font-size: 3.5vw;
+    line-height: 7vw;
+  }
+  .main_s2 img {
+    width: 23vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: 0;
+  }
+  /* main_s3 */
+  .main_s3 {
+    height: auto;
+  }
+  .main_s3 > .animate1 {
+    animation: moveRight 3s ease forwards;
+  }
+  @keyframes moveRight {
+    from {
+      left: 0;
+    }
+    to {
+      left: 87.5%;
+    }
+  }
+  .main_s3 > .animate2 {
+    animation: moveLeft 3s ease forwards;
+  }
+  @keyframes moveLeft {
+    from {
+      right: 0;
+    }
+    to {
+      right: 87.5%;
+    }
+  }
+  .main_s3 .article_container {
+    width: 90%;
+    height: auto;
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+    flex-direction: column;
+  }
+  .main_s3 .article_container .article {
+    width: 100%;
+    height: 110vw;
+    margin-bottom: 25vw;
+  }
+  .main_s3 .article_container .article > p {
+    font-size: 8vw;
+    margin-top: 4vw;
+    letter-spacing: -0.3vw;
+  }
+
+  .main_s3 .article_container .article .text_box_container .text_box {
+    width: 90%;
+  }
+  .main_s3
+    .article_container
+    .article
+    .text_box_container
+    .text_box
+    .title_box {
+    width: 44%;
+  }
+  .main_s3
+    .article_container
+    .article
+    .text_box_container
+    .text_box
+    .title_box
+    p {
+    font-size: 3.5vw;
+    margin-bottom: 2.5vw;
+  }
+  .main_s3
+    .article_container
+    .article
+    .text_box_container
+    .text_box
+    .content_box {
+    width: 52%;
+  }
+  .main_s3
+    .article_container
+    .article
+    .text_box_container
+    .text_box
+    .content_box
+    p {
+    font-size: 2.5vw;
+    margin-bottom: 2.5vw;
+  }
+  /* main_s4 */
+  .main_s4 {
+    height: auto;
+  }
+  .main_s4 .article_container {
+    width: 100%;
+    height: 100%;
+  }
+  .main_s4 .article_container > img {
+    display: none;
+  }
+  .main_s4 .article_container .article {
+    width: 100%;
+  }
+  .main_s4 .article_container .article .text_box {
+    margin-top: 15vw;
+    margin-left: 5%;
+  }
+  .main_s4 .article_container .article .text_box p {
+    font-size: 3.5vw;
+    line-height: 7vw;
+  }
+  .main_s4 .article_container .article .scroll_container {
+    height: 70vw;
+    margin-top: 10vw;
+  }
+  .main_s4
+    .article_container
+    .article
+    .scroll_container
+    .video_box_container
+    .video_box {
+    width: 90vw;
+    height: auto;
+    margin-right: 3vw;
+  }
+  .main_s4
+    .article_container
+    .article
+    .scroll_container
+    .video_box_container
+    .video_box:first-child {
+    margin-left: 5vw;
+  }
+  .main_s4
+    .article_container
+    .article
+    .scroll_container
+    .video_box_container
+    .video_box
+    p:nth-child(2) {
+    font-size: 3vw;
+    margin-top: 3vw;
+    margin-bottom: 1vw;
+  }
+  .main_s4
+    .article_container
+    .article
+    .scroll_container
+    .video_box_container
+    .video_box
+    p:nth-child(3) {
+    font-size: 3.5vw;
+  }
+  .main_s4 .article_container .article .scroll_container::-webkit-scrollbar {
+    display: none;
+  }
+  /* main_s5 */
+  .main_s5 {
+    height: auto;
+  }
+  .main_s5 p:nth-child(2) {
+    font-size: 7vw;
+    margin: 0;
+    text-align: center;
+  }
+  .main_s5 .article_container > img:nth-child(1) {
+    width: 100%;
+    top: 10vw;
+    left: 0;
+    margin-top: 5vw;
+  }
+  .main_s5 p:nth-child(3) {
+    margin: 0;
+    margin-top: 85vw;
+    margin-left: 5%;
+    font-size: 5vw;
+  }
+  .main_s5 p:nth-child(4) {
+    font-size: 6vw;
+    margin-top: 5vw;
+  }
+  .main_s5 .article_container .img_box {
+    height: 60vw;
+    margin-top: 20vw;
+  }
+  .main_s5 .article_container .video_box_container {
+    height: 7.5vw;
+    width: 100%;
+    margin-top: 7vw;
+  }
+  .main_s5 .article_container .video_box_container > img {
+    display: none;
+  }
+  .main_s5 .article_container .video_box_container .video_box {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .main_s5
+    .article_container
+    .video_box_container
+    .video_box::-webkit-scrollbar {
+    display: none;
+  }
+  .main_s5 .article_container .video_box_container .video_box img {
+    width: 17.08vw;
+    margin-right: 4.17vw;
+  }
+}

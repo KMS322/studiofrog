@@ -16,11 +16,15 @@ const MainS5 = () => {
             <img src="/images/main_s4_img1.jpg" alt="" />
             <img src="/images/main_s4_img1.jpg" alt="" />
             <img src="/images/main_s4_img1.jpg" alt="" />
+            <img src="/images/main_s4_img1.jpg" alt="" />
+            <img src="/images/main_s4_img1.jpg" alt="" />
+            <img src="/images/main_s4_img1.jpg" alt="" />
           </div>
           <img src="/images/right_btn.png" alt="" />
         </div>
         <div className="img_box">
-          <img src="/images/main_s5_img2.jpg" alt="" />
+          <img id="pc" src="/images/main_s5_img2.jpg" alt="" />
+          <img id="mobile" src="/images/main_s5_img2_mobile.jpg" alt="" />
         </div>
       </div>
     </div>

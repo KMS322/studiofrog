@@ -5,14 +5,27 @@ const MainS3 = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const triggerPosition = (80 * window.innerWidth) / 100; // 120vw in pixels
+      const windowWidth = window.innerWidth;
+      let triggerPosition1;
+      let triggerPosition2;
+
+      if (windowWidth <= 500) {
+        triggerPosition1 = (90 * windowWidth) / 100; // 90vw in pixels
+        triggerPosition2 = (700 * windowWidth) / 100; // 130vw in pixels
+      } else {
+        triggerPosition1 = (80 * windowWidth) / 100; // 120vw in pixels
+        triggerPosition2 = triggerPosition1; // tagRef2 will be animated at the same scroll position as tagRef1
+      }
 
       if (
-        scrollPosition >= triggerPosition &&
+        scrollPosition >= triggerPosition1 &&
         tagRef1.current &&
         tagRef2.current
       ) {
         tagRef1.current.classList.add("animate1");
+      }
+
+      if (scrollPosition >= triggerPosition2 && tagRef2.current) {
         tagRef2.current.classList.add("animate2");
         window.removeEventListener("scroll", handleScroll);
       }
@@ -20,7 +33,6 @@ const MainS3 = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup the event listener when component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

@@ -1,4 +1,5 @@
 import "../../css/portfolio.css";
+import "../../css/portfolio_mobile.css";
 import React, { useState, useEffect } from "react";
 const Portfolio = () => {
   const [changeText, setChangeText] = useState("");

@@ -4,7 +4,6 @@ const MainS4 = () => {
 
   const handleScrollRight = () => {
     if (scrollContainerRef.current) {
-      // 현재 참조된 요소가 있는지 확인
       if (
         scrollContainerRef.current.scrollWidth >
         scrollContainerRef.current.clientWidth
@@ -52,11 +51,16 @@ const MainS4 = () => {
               })}
             </div>
           </div>
-          <p>
+          {/* <p>
             <span>+</span> MORE
-          </p>
+          </p> */}
         </div>
-        <img src="/images/right_btn.png" alt="" onClick={handleScrollRight} />
+        <img
+          id="pc"
+          src="/images/right_btn.png"
+          alt=""
+          onClick={handleScrollRight}
+        />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import "../../css/about.css";
+import "../../css/about_mobile.css";
 import AboutS1 from "./aboutS1";
 import AboutS2 from "./aboutS2";
 import AboutS3 from "./aboutS3";

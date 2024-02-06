@@ -35,7 +35,7 @@ const AboutS1 = () => {
       </div>
       <div className="video_box">
         <img src="/images/main_s4_img1.jpg" alt="" />
-        <img src="/images/play_btn.png" alt="" />
+        {/* <img src="/images/play_btn.png" alt="" /> */}
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import "../css/footer.css";
+import "../css/footer_mobile.css";
 import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Footer = () => {
           <div className="address_box">
             <p>대구광역시 동구 경안로 722</p>
             <p>3층 STUDIOFROG</p>
-            <p>.</p>
+            <p id="pc">.</p>
           </div>
         </div>
         <div className="text_box">
@@ -78,9 +79,10 @@ const Footer = () => {
               CONTACT
             </p>
           </div>
-          <p>Copyright © 2023 STUDIOFROG All Rights Reserved.</p>
+          <p id="pc">Copyright © 2023 STUDIOFROG All Rights Reserved.</p>
         </div>
       </div>
+      <p id="mobile">Copyright © 2023 STUDIOFROG All Rights Reserved.</p>
     </div>
   );
 };
