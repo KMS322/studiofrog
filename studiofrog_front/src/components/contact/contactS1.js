@@ -276,6 +276,7 @@ const ContactS1 = () => {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
         <div className="check_box">
           {check ? (
             <img
@@ -283,6 +284,36 @@ const ContactS1 = () => {
               alt=""
               onClick={() => {
                 setCheck(!check);
+=======
+        <div className="sub_container">
+          <div className="file_box">
+            <p>레퍼런스</p>
+            <label for="file">
+              <div class="upload_btn">
+                <img src="/images/clip.png" alt="" />
+                <p>
+                  &nbsp;{selectedFileName || "파일첨부, 링크첨부 (최대20MB)"}
+                </p>
+              </div>
+            </label>
+            <input
+              id="file"
+              name="file"
+              type="file"
+              onChange={handleFileChange}
+            />
+          </div>
+          <div className="textarea_box">
+            <p>
+              상담내용 <sup>*</sup>
+            </p>
+            <textarea
+              type="text"
+              name="content"
+              value={content}
+              onChange={(e) => {
+                handleInput(e, "content");
+>>>>>>> d64dc6fbcd52eefcaec2d50aa5ed12fb29922208
               }}
             />
           ) : (

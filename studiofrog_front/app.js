@@ -6,10 +6,15 @@ const passport = require("passport");
 const dotenv = require("dotenv");
 const userRouter = require("./routes/user");
 const listRouter = require("./routes/list");
+<<<<<<< HEAD
 const contactRouter = require("./routes/contact");
 const db = require("./models");
 const passportConfig = require("./passport");
 const path = require("path");
+=======
+const db = require("./models");
+const passportConfig = require("./passport");
+>>>>>>> d64dc6fbcd52eefcaec2d50aa5ed12fb29922208
 
 dotenv.config();
 const app = express();
@@ -29,10 +34,14 @@ app.use(
     credentials: true,
   })
 );
+<<<<<<< HEAD
 app.use(
   "/contactFiles",
   express.static(path.join(__dirname, "public", "contactFiles"))
 );
+=======
+
+>>>>>>> d64dc6fbcd52eefcaec2d50aa5ed12fb29922208
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -58,7 +67,11 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRouter);
 app.use("/list", listRouter);
+<<<<<<< HEAD
 app.use("/contact", contactRouter);
+=======
+
+>>>>>>> d64dc6fbcd52eefcaec2d50aa5ed12fb29922208
 // app.use((err, req, res, next) => {
 //   // 에러 처리 미들웨어
 // });
