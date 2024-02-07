@@ -276,15 +276,6 @@ const ContactS1 = () => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-        <div className="check_box">
-          {check ? (
-            <img
-              src="/images/checked_btn.png"
-              alt=""
-              onClick={() => {
-                setCheck(!check);
-=======
         <div className="sub_container">
           <div className="file_box">
             <p>레퍼런스</p>
@@ -313,10 +304,8 @@ const ContactS1 = () => {
               value={content}
               onChange={(e) => {
                 handleInput(e, "content");
->>>>>>> d64dc6fbcd52eefcaec2d50aa5ed12fb29922208
               }}
             />
-          ) : (
             <img
               src="/images/unChecked_btn.png"
               alt=""
@@ -324,14 +313,14 @@ const ContactS1 = () => {
                 setCheck(!check);
               }}
             />
-          )}
 
-          <p>
-            <u>개인정보수집</u>에 동의합니다.
-          </p>
-        </div>
-        <div className="submit_btn" onClick={sendForm}>
-          문의하기
+            <p>
+              <u>개인정보수집</u>에 동의합니다.
+            </p>
+          </div>
+          <div className="submit_btn" onClick={sendForm}>
+            문의하기
+          </div>
         </div>
       </div>
       {modalOpen && <Modal data={modalMsg} />}

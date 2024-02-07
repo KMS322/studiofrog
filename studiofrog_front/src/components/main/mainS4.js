@@ -43,29 +43,30 @@ const MainS4 = () => {
           </div>
           <div className="scroll_container" ref={scrollContainerRef}>
             <div className="video_box_container">
-              {lists.map((list, index) => {
-                return (
-                  <div className="video_box" key={index}>
-                    <YouTube
-                      videoId={list.file_id}
-                      opts={{
-                        playerVars: {
-                          autoplay: 1,
-                          rel: 0,
-                          modestbranding: 1,
-                          controls: 0,
-                        },
-                      }}
-                      onEnd={(e) => {
-                        e.target.stopVideo(0);
-                      }}
-                      style={{}}
-                    />
-                    <p>{list.file_title}</p>
-                    <p>프로그 스튜디오</p>
-                  </div>
-                );
-              })}
+              {lists &&
+                lists.map((list, index) => {
+                  return (
+                    <div className="video_box" key={index}>
+                      <YouTube
+                        videoId={list.file_id}
+                        opts={{
+                          playerVars: {
+                            autoplay: 1,
+                            rel: 0,
+                            modestbranding: 1,
+                            controls: 0,
+                          },
+                        }}
+                        onEnd={(e) => {
+                          e.target.stopVideo(0);
+                        }}
+                        style={{}}
+                      />
+                      <p>{list.file_title}</p>
+                      <p>프로그 스튜디오</p>
+                    </div>
+                  );
+                })}
             </div>
           </div>
           {/* <p>

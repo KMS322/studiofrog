@@ -7,7 +7,6 @@ const AdminMainComponent = () => {
   const [openForm, setOpenForm] = useState(false);
   const dispatch = useDispatch();
   const { lists, addListsDone } = useSelector((state) => state.videoList);
-  console.log("addListsDone : ", addListsDone);
   useEffect(() => {
     if (addListsDone) {
       setOpenForm(false);
