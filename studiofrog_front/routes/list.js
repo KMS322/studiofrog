@@ -35,8 +35,9 @@ router.post("/upload", upload.single("file"), async (req, res, next) => {
 router.post("/load", async (req, res, next) => {
   try {
     const fileDatas = await VideoList.findAll({});
-
-    res.status(200).json(fileDatas);
+    if (fileDatas) {
+      res.status(200).json(fileDatas);
+    }
   } catch (error) {
     console.error(error);
     next();
@@ -73,6 +74,25 @@ router.post("/add", async (req, res, next) => {
         file_url: req.body.urls[i],
       });
     }
+  } catch (error) {
+    console.error(error);
+    next();
+  }
+});
+
+router.post("/changeMain", async (req, res, next) => {
+  try {
+    console.log("req.body.url : ", req.body.url);
+    const videoId = req.body.url.match(/[?&]v=([^&]+)/)[1];
+    const videoTitle = await getVideoTitle(videoId);
+    await VideoList.update(
+      {
+        file_id: videoId,
+        file_title: videoTitle,
+        file_url: req.body.url,
+      },
+      { where: { type: "main" } }
+    );
   } catch (error) {
     console.error(error);
     next();

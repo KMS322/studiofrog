@@ -26,7 +26,7 @@ function App() {
     dispatch({
       type: LOAD_LISTS_REQUEST,
     });
-  }, [lists, dispatch]);
+  }, [dispatch]);
   return (
     <>
       <Header page={currentPage} />

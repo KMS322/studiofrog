@@ -43,12 +43,30 @@
   display: flex;
   align-items: center;
 }
+.adminMain .table .main {
+  border: 1px solid black;
+  border-width: 1px 0px;
+}
+
 .adminMain .table .even_row {
   background-color: #f7f7f7;
 }
 .adminMain .table .content_row p {
   font-size: 0.78vw;
   font-weight: 200;
+  border: 1px solid red;
+}
+.adminMain .table .main p {
+  font-weight: 600;
+}
+.adminMain .table .main input {
+  margin-left: 3vw;
+  width: 27%;
+  height: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: 0.5vw;
+  font-size: 0.78vw;
 }
 .adminMain .table .row > p:nth-child(1) {
   margin-left: 2.55vw;
@@ -75,12 +93,18 @@
 }
 .adminMain .table .row .delete_btn {
   margin-left: 2.5vw;
+  height: 100%;
   width: 5%;
+  display: flex;
+  align-items: center;
 }
 .adminMain .table .row .delete_btn p {
   width: 100%;
-  height: 50%;
+  height: 60%;
   font-size: 0.89vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid black;
   cursor: pointer;
   text-align: center;

@@ -1,12 +1,19 @@
 import "../css/adminMain.css";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { LOAD_LISTS_REQUEST, DELETE_LIST_REQUEST } from "../reducers/videoList";
+import {
+  LOAD_LISTS_REQUEST,
+  DELETE_LIST_REQUEST,
+  CHANGE_MAIN_REQUEST,
+} from "../reducers/videoList";
 import UploadForm from "./adminUploadForm";
 const AdminMainComponent = () => {
   const [openForm, setOpenForm] = useState(false);
+  const [mainUrl, setMainUrl] = useState("");
+  const [mainChange, setMainChange] = useState(true);
   const dispatch = useDispatch();
   const { lists, addListsDone } = useSelector((state) => state.videoList);
+  const mainList = lists && lists.filter((list) => list.type === "main");
   useEffect(() => {
     if (addListsDone) {
       setOpenForm(false);
@@ -23,6 +30,15 @@ const AdminMainComponent = () => {
       data: {
         id,
       },
+    });
+  };
+  const handleMain = (e) => {
+    setMainUrl(e.target.value);
+  };
+  const changeMain = () => {
+    dispatch({
+      type: CHANGE_MAIN_REQUEST,
+      data: mainUrl,
     });
   };
   return (
@@ -43,18 +59,34 @@ const AdminMainComponent = () => {
           <p>Youtube title</p>
           <p></p>
         </div>
-        <div className="content_row row">
+        <div className="content_row row main">
           <p>Main</p>
-          <p></p>
-          <p></p>
-          <div className="delete_btn">
-            <p
-              onClick={() => {
-                deleteList();
+          {mainChange ? (
+            <input
+              type="text"
+              name={mainUrl}
+              value={mainUrl}
+              onChange={(e) => {
+                handleMain(e);
               }}
-            >
-              삭제
-            </p>
+            />
+          ) : (
+            <p>{mainList.file_url}</p>
+          )}
+          {mainChange ? <p></p> : <p>{mainList.file_title}</p>}
+
+          <div className="delete_btn">
+            {mainChange ? (
+              <p onClick={changeMain}>저장</p>
+            ) : (
+              <p
+                onClick={() => {
+                  setMainChange(true);
+                }}
+              >
+                수정
+              </p>
+            )}
           </div>
         </div>
         {lists &&

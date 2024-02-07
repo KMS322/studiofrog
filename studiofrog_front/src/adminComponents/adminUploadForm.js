@@ -35,8 +35,6 @@ const AdminUploadForm = ({ handlePopup }) => {
       type: ADD_LISTS_REQUEST,
       data: { urls },
     });
-
-    handlePopup();
   };
   return (
     <div className="adminUploadForm">
