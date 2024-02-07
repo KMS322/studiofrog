@@ -1,5 +1,8 @@
 import React, { useRef } from "react";
+import YouTube from "react-youtube";
+import { useSelector } from "react-redux";
 const MainS4 = () => {
+  const { lists } = useSelector((state) => state.videoList);
   const scrollContainerRef = useRef(null);
 
   const handleScrollRight = () => {
@@ -40,11 +43,25 @@ const MainS4 = () => {
           </div>
           <div className="scroll_container" ref={scrollContainerRef}>
             <div className="video_box_container">
-              {Array.from({ length: 20 }, (_, index) => {
+              {lists.map((list, index) => {
                 return (
                   <div className="video_box" key={index}>
-                    <img src="/images/main_s4_img1.jpg" alt="" />
-                    <p>제품소개영상{index}</p>
+                    <YouTube
+                      videoId={list.file_id}
+                      opts={{
+                        playerVars: {
+                          autoplay: 1,
+                          rel: 0,
+                          modestbranding: 1,
+                          controls: 0,
+                        },
+                      }}
+                      onEnd={(e) => {
+                        e.target.stopVideo(0);
+                      }}
+                      style={{}}
+                    />
+                    <p>{list.file_title}</p>
                     <p>프로그 스튜디오</p>
                   </div>
                 );

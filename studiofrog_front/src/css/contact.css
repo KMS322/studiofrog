@@ -3,6 +3,8 @@
   width: 56.67%;
   height: 67.45vw;
   margin: 0 auto;
+  margin-top: 5.21vw;
+  border: 1px solid white;
 }
 .contact_s1 > p {
   margin-top: 2.34vw;

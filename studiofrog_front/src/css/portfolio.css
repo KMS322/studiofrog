@@ -1,13 +1,15 @@
 /* portfolio */
 .portfolio {
   width: 56.67%;
-  /* height: 125vw; */
   height: auto;
   margin: 0 auto;
+  margin-top: 5.21vw;
+  border: 1px solid white;
 }
 .portfolio > p {
   font-size: 1.3vw;
   font-weight: 600;
+  margin-top: 2.34vw;
 }
 .portfolio .text_box {
   width: 100%;

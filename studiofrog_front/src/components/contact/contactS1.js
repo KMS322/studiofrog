@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { SEND_EMAIL_REQUEST } from "../../reducers/contact";
+import Modal from "./modal";
+import axios from "axios";
+
 const ContactS1 = () => {
+  const dispatch = useDispatch();
+  const { sendEmailDone } = useSelector((state) => state.contact);
   const [projectPurpose, setProjectPurpose] = useState("");
   const [projectName, setProjectName] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -9,9 +16,33 @@ const ContactS1 = () => {
   const [budget, setBudget] = useState("");
   const [period, setPeriod] = useState("");
   const [file, setFile] = useState(null);
+  const [filePath, setFilePath] = useState("");
   const [selectedFileName, setSelectedFileName] = useState("");
   const [content, setContent] = useState("");
   const [check, setCheck] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMsg, setModalMsg] = useState("");
+
+  useEffect(() => {
+    if (sendEmailDone) {
+      setModalMsg("success");
+      setModalOpen(true);
+    }
+  }, [sendEmailDone]);
+
+  useEffect(() => {
+    if (modalOpen) {
+      const timeoutId = setTimeout(() => {
+        setModalOpen(false);
+
+        if (modalMsg === "success") {
+          window.location.href = "/";
+        }
+      }, 2000);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [modalOpen, modalMsg]);
 
   const handleInput = (e, inputType) => {
     if (inputType === "projectPurpose") {
@@ -38,6 +69,58 @@ const ContactS1 = () => {
     const attachedFile = e.target.files[0];
     setFile(attachedFile);
     setSelectedFileName(attachedFile ? attachedFile.name : "");
+    setFilePath(URL.createObjectURL(attachedFile));
+  };
+
+  const sendForm = async (e) => {
+    e.preventDefault();
+    console.log("file : ", file);
+    try {
+      if (file) {
+        const formData = new FormData();
+        formData.append("file", file, encodeURIComponent(file.name));
+        await axios.post("/list/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+      }
+      if (
+        !projectPurpose ||
+        !projectName ||
+        !companyName ||
+        !name ||
+        !tel ||
+        !email ||
+        !budget ||
+        !period ||
+        !content
+      ) {
+        setModalMsg("fail");
+        setModalOpen(true);
+      } else if (!check) {
+        setModalMsg("unChecked");
+        setModalOpen(true);
+      } else {
+        dispatch({
+          type: SEND_EMAIL_REQUEST,
+          data: {
+            projectPurpose,
+            projectName,
+            companyName,
+            name,
+            tel,
+            email,
+            budget,
+            period,
+            selectedFileName,
+            content,
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Error sending form:", error);
+    }
   };
   return (
     <>
@@ -167,7 +250,7 @@ const ContactS1 = () => {
           <div className="sub_container">
             <div className="file_box">
               <p>레퍼런스</p>
-              <label for="file">
+              <label htmlFor="file">
                 <div className="upload_btn">
                   <img src="/images/clip.png" alt="" />
                   <p>
@@ -175,7 +258,7 @@ const ContactS1 = () => {
                   </p>
                 </div>
               </label>
-              <input name="file" type="file" onChange={handleFileChange} />
+              <input id="file" type="file" onChange={handleFileChange} />
             </div>
             <div className="textarea_box">
               <p>
@@ -216,8 +299,11 @@ const ContactS1 = () => {
             <u>개인정보수집</u>에 동의합니다.
           </p>
         </div>
+        <div className="submit_btn" onClick={sendForm}>
+          문의하기
+        </div>
       </div>
-      <div className="submit_btn">문의하기</div>
+      {modalOpen && <Modal data={modalMsg} />}
     </>
   );
 };

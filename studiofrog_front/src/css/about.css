@@ -3,6 +3,8 @@
   width: 56.67%;
   height: 59.48vw;
   margin: 0 auto;
+  margin-top: 5.21vw;
+  border: 1px solid white;
 }
 .about_s1 > p {
   font-size: 1.3vw;
