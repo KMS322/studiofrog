@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+import YouTube from "react-youtube";
+import { useSelector } from "react-redux";
 const AboutS1 = () => {
+  const { lists } = useSelector((state) => state.videoList);
+  const aboutList = lists && lists.filter((list) => list.type === "about");
   const [changeText, setChangeText] = useState("");
   const content = [
     "창의적인",
@@ -34,8 +38,21 @@ const AboutS1 = () => {
         <p>영상을 제작하겠습니다.</p>
       </div>
       <div className="video_box">
-        <img src="/images/main_s4_img1.jpg" alt="" />
-        {/* <img src="/images/play_btn.png" alt="" /> */}
+        <YouTube
+          videoId={aboutList && aboutList.length && aboutList.file_id}
+          opts={{
+            playerVars: {
+              autoplay: 1,
+              rel: 0,
+              modestbranding: 1,
+              controls: 0,
+            },
+          }}
+          onEnd={(e) => {
+            e.target.stopVideo(0);
+          }}
+          style={{}}
+        />
       </div>
     </div>
   );

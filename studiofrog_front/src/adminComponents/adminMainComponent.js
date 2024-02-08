@@ -5,18 +5,48 @@ import {
   LOAD_LISTS_REQUEST,
   DELETE_LIST_REQUEST,
   CHANGE_MAIN_REQUEST,
+  CHANGE_ABOUT_REQUEST,
 } from "../reducers/videoList";
 import UploadForm from "./adminUploadForm";
 const AdminMainComponent = () => {
   const [openForm, setOpenForm] = useState(false);
   const [mainUrl, setMainUrl] = useState("");
-  const [mainChange, setMainChange] = useState(true);
+  const [aboutUrl, setAboutUrl] = useState("");
+  const [mainChange, setMainChange] = useState(false);
+  const [aboutChange, setAboutChange] = useState(false);
   const dispatch = useDispatch();
-  const { lists, addListsDone } = useSelector((state) => state.videoList);
+
+  const { lists, addListsDone, changeMainDone, changeAboutDone } = useSelector(
+    (state) => state.videoList
+  );
   const mainList = lists && lists.filter((list) => list.type === "main");
+  const aboutList = lists && lists.filter((list) => list.type === "about");
+  const portfolioLists =
+    lists && lists.filter((list) => list.type === "portfolio");
+  useEffect(() => {
+    setMainChange(
+      !lists || lists.filter((list) => list.type === "main").length === 0
+    );
+  }, [lists]);
+  useEffect(() => {
+    setAboutChange(
+      !lists || lists.filter((list) => list.type === "about").length === 0
+    );
+  }, [lists]);
+  useEffect(() => {
+    if (changeMainDone) {
+      window.location.href = "/admin";
+    }
+  }, [changeMainDone]);
+  useEffect(() => {
+    if (changeAboutDone) {
+      window.location.href = "/admin";
+    }
+  }, [changeAboutDone]);
   useEffect(() => {
     if (addListsDone) {
       setOpenForm(false);
+      window.location.href = "/admin";
     }
   }, [addListsDone]);
   useEffect(() => {
@@ -35,10 +65,19 @@ const AdminMainComponent = () => {
   const handleMain = (e) => {
     setMainUrl(e.target.value);
   };
+  const handleAbout = (e) => {
+    setAboutUrl(e.target.value);
+  };
   const changeMain = () => {
     dispatch({
       type: CHANGE_MAIN_REQUEST,
-      data: mainUrl,
+      data: { mainUrl },
+    });
+  };
+  const changeAbout = () => {
+    dispatch({
+      type: CHANGE_ABOUT_REQUEST,
+      data: { aboutUrl },
     });
   };
   return (
@@ -64,16 +103,19 @@ const AdminMainComponent = () => {
           {mainChange ? (
             <input
               type="text"
-              name={mainUrl}
               value={mainUrl}
               onChange={(e) => {
                 handleMain(e);
               }}
             />
           ) : (
-            <p>{mainList.file_url}</p>
+            <p>{mainList && mainList.length && mainList[0].file_url}</p>
           )}
-          {mainChange ? <p></p> : <p>{mainList.file_title}</p>}
+          {mainChange ? (
+            <p></p>
+          ) : (
+            <p>{mainList && mainList.length && mainList[0].file_title}</p>
+          )}
 
           <div className="delete_btn">
             {mainChange ? (
@@ -89,8 +131,41 @@ const AdminMainComponent = () => {
             )}
           </div>
         </div>
-        {lists &&
-          lists.map((list, index) => {
+        <div className="content_row row main">
+          <p>About</p>
+          {aboutChange ? (
+            <input
+              type="text"
+              value={aboutUrl}
+              onChange={(e) => {
+                handleAbout(e);
+              }}
+            />
+          ) : (
+            <p>{aboutList && aboutList.length && aboutList[0].file_url}</p>
+          )}
+          {aboutChange ? (
+            <p></p>
+          ) : (
+            <p>{aboutList && aboutList.length && aboutList[0].file_title}</p>
+          )}
+
+          <div className="delete_btn">
+            {aboutChange ? (
+              <p onClick={changeAbout}>저장</p>
+            ) : (
+              <p
+                onClick={() => {
+                  setAboutChange(true);
+                }}
+              >
+                수정
+              </p>
+            )}
+          </div>
+        </div>
+        {portfolioLists &&
+          portfolioLists.map((list, index) => {
             return (
               <div
                 className={

@@ -72,8 +72,10 @@ router.post("/add", async (req, res, next) => {
         file_id: videoId,
         file_title: videoTitle,
         file_url: req.body.urls[i],
+        type: "portfolio",
       });
     }
+    res.status(200).send("ok");
   } catch (error) {
     console.error(error);
     next();
@@ -82,17 +84,62 @@ router.post("/add", async (req, res, next) => {
 
 router.post("/changeMain", async (req, res, next) => {
   try {
-    console.log("req.body.url : ", req.body.url);
-    const videoId = req.body.url.match(/[?&]v=([^&]+)/)[1];
+    const videoId = req.body.mainUrl.match(/[?&]v=([^&]+)/)[1];
     const videoTitle = await getVideoTitle(videoId);
-    await VideoList.update(
-      {
+    const checkMain = await VideoList.findOne({
+      where: { type: "main" },
+    });
+    if (checkMain) {
+      await VideoList.update(
+        {
+          file_id: videoId,
+          file_title: videoTitle,
+          file_url: req.body.mainUrl,
+          type: "main",
+        },
+        { where: { type: "main" } }
+      );
+    } else {
+      await VideoList.create({
         file_id: videoId,
         file_title: videoTitle,
-        file_url: req.body.url,
-      },
-      { where: { type: "main" } }
-    );
+        file_url: req.body.mainUrl,
+        type: "main",
+      });
+    }
+    res.status(200).send("ok");
+  } catch (error) {
+    console.error(error);
+    next();
+  }
+});
+
+router.post("/changeAbout", async (req, res, next) => {
+  try {
+    const videoId = req.body.aboutUrl.match(/[?&]v=([^&]+)/)[1];
+    const videoTitle = await getVideoTitle(videoId);
+    const checkAbout = await VideoList.findOne({
+      where: { type: "about" },
+    });
+    if (checkAbout) {
+      await VideoList.update(
+        {
+          file_id: videoId,
+          file_title: videoTitle,
+          file_url: req.body.aboutUrl,
+          type: "about",
+        },
+        { where: { type: "about" } }
+      );
+    } else {
+      await VideoList.create({
+        file_id: videoId,
+        file_title: videoTitle,
+        file_url: req.body.aboutUrl,
+        type: "about",
+      });
+    }
+    res.status(200).send("ok");
   } catch (error) {
     console.error(error);
     next();

@@ -365,7 +365,7 @@
 .main_s5 p:nth-child(4) span {
   color: #8f63da;
 }
-.main_s5 .article_container .video_box_container {
+.main_s5 .article_container .logo_box_container {
   width: 62.5%;
   height: 3.7vw;
   margin: 0 auto;
@@ -374,17 +374,19 @@
   align-items: center;
   justify-content: space-between;
 }
-.main_s5 .article_container .video_box_container > img {
+.main_s5 .article_container .logo_box_container > img {
   width: 3.33%;
   cursor: pointer;
 }
-.main_s5 .article_container .video_box_container .video_box {
+.main_s5 .article_container .logo_box_container .logo_box {
   width: 90.67%;
   height: 100%;
+  overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
-.main_s5 .article_container .video_box_container .video_box img {
+.main_s5 .article_container .logo_box_container .logo_box img {
   width: 14.71%;
   height: 100%;
 }
