@@ -1,10 +1,38 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import YouTube from "react-youtube";
 import { useSelector } from "react-redux";
 const MainS4 = () => {
   const { lists } = useSelector((state) => state.videoList);
   const scrollContainerRef = useRef(null);
+  const tagRef = useRef(null);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowWidth = window.innerWidth;
+      let triggerPosition;
+
+      if (windowWidth <= 500) {
+        triggerPosition = (90 * windowWidth) / 100; // 90vw in pixels
+      } else {
+        triggerPosition = (120 * windowWidth) / 100; // 120vw in pixels
+      }
+
+      if (
+        scrollPosition >= triggerPosition &&
+        tagRef.current &&
+        tagRef.current
+      ) {
+        tagRef.current.classList.add("animate1");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const handleScrollRight = () => {
     if (scrollContainerRef.current) {
       if (
@@ -35,7 +63,7 @@ const MainS4 = () => {
       <div className="article_container">
         <img src="/images/left_btn.png" alt="" onClick={handleScrollLeft} />
         <div className="article">
-          <div className="text_box">
+          <div className="text_box" ref={tagRef}>
             <p>
               <span>스튜디오 프로그</span>는 기획부터 편집까지
             </p>
@@ -51,7 +79,6 @@ const MainS4 = () => {
                         videoId={list.file_id}
                         opts={{
                           playerVars: {
-                            autoplay: 1,
                             rel: 0,
                             modestbranding: 1,
                             controls: 0,

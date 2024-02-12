@@ -11,6 +11,7 @@ module.exports = () => {
         passReqToCallback: true,
       },
       async (req, user_member_id, user_member_pw, done) => {
+        console.log("passport req.body : ", req.body);
         try {
           const { userType } = req.body;
           const user = await User.findOne({

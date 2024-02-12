@@ -1,8 +1,12 @@
 import "../../css/portfolio.css";
 import "../../css/portfolio_mobile.css";
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import YouTube from "react-youtube";
 const Portfolio = () => {
   const [changeText, setChangeText] = useState("");
+  const [videoCnt, setVideoCnt] = useState(6);
+  const [showMoreBtn, setShowMoreBtn] = useState(true);
   const content = [
     "기업홍보영상",
     "소셜미디어영상",
@@ -14,6 +18,10 @@ const Portfolio = () => {
     "항공영상",
     "CG영상",
   ];
+
+  const { lists } = useSelector((state) => state.videoList);
+  const portfolioLists =
+    lists && lists.filter((list) => list.type === "portfolio");
   useEffect(() => {
     let currentIndex = 0;
     const updateText = () => {
@@ -27,6 +35,21 @@ const Portfolio = () => {
     updateText();
     return () => clearTimeout(updateText);
   }, []);
+
+  const handleMore = () => {
+    let plusCnt = videoCnt;
+    if (videoCnt >= portfolioLists.length || videoCnt + 6 >= portfolioLists) {
+      console.log("AA");
+      plusCnt = videoCnt;
+    } else {
+      console.log("BB");
+      plusCnt += 6;
+      if (plusCnt > portfolioLists.length) {
+        setShowMoreBtn(false);
+      }
+    }
+    setVideoCnt(plusCnt);
+  };
   return (
     <div className="portfolio">
       <p>PORTFOLIO</p>
@@ -50,38 +73,38 @@ const Portfolio = () => {
         <p>#CG영상</p>
       </div>
       <div className="article_container">
-        <div className="article">
-          <img src="/images/main_s4_img1.jpg" alt="" />
-          <p>회사소개영상</p>
-          <p>프로그스튜디오</p>
-        </div>
-        <div className="article">
-          <img src="/images/main_s4_img1.jpg" alt="" />
-          <p>회사소개영상</p>
-          <p>프로그스튜디오</p>
-        </div>
-        <div className="article">
-          <img src="/images/main_s4_img1.jpg" alt="" />
-          <p>회사소개영상</p>
-          <p>프로그스튜디오</p>
-        </div>
-        <div className="article">
-          <img src="/images/main_s4_img1.jpg" alt="" />
-          <p>회사소개영상</p>
-          <p>프로그스튜디오</p>
-        </div>
-        <div className="article">
-          <img src="/images/main_s4_img1.jpg" alt="" />
-          <p>회사소개영상</p>
-          <p>프로그스튜디오</p>
-        </div>
-        <div className="article">
-          <img src="/images/main_s4_img1.jpg" alt="" />
-          <p>회사소개영상</p>
-          <p>프로그스튜디오</p>
-        </div>
+        {portfolioLists &&
+          portfolioLists.map((list, index) => {
+            if (index < videoCnt)
+              return (
+                <div className="article" key={index}>
+                  <YouTube
+                    videoId={list.file_id}
+                    opts={{
+                      playerVars: {
+                        rel: 0,
+                        modestbranding: 1,
+                        controls: 0,
+                      },
+                    }}
+                    onEnd={(e) => {
+                      e.target.stopVideo(0);
+                    }}
+                    style={{}}
+                  />
+                  <p>{list.file_title}</p>
+                  <p>프로그스튜디오</p>
+                </div>
+              );
+          })}
       </div>
-      <div className="btn_box">
+      <div
+        className="btn_box"
+        style={{
+          display: showMoreBtn ? "flex" : "none",
+        }}
+        onClick={handleMore}
+      >
         <p>More View</p>
         <img src="/images/more_btn.png" alt="" />
       </div>

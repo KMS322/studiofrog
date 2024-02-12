@@ -9,7 +9,6 @@ const MainS1 = () => {
         videoId={mainList && mainList.length && mainList.file_id}
         opts={{
           playerVars: {
-            autoplay: 1,
             rel: 0,
             modestbranding: 1,
             controls: 0,

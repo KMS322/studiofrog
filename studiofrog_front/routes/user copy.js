@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+const passport = require("passport");
 const { User } = require("../models");
 const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
 const router = express.Router();
@@ -45,25 +46,31 @@ router.post("/signup", isNotLoggedIn, async (req, res, next) => {
   }
 });
 
-router.post("/login", isNotLoggedIn, async (req, res, next) => {
-  try {
+router.post("/login", isNotLoggedIn, (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
+    console.log("info : ", info);
     console.log("req.body : ", req.body);
-
-    const user = await User.findOne({
-      where: {
-        admin_id: req.body.adminId,
-      },
-    });
-    const result = await bcrypt.compare(req.body.adminPw, user.admin_pw);
-    if (result) {
-      res.status(200).json(user);
-    } else {
-      res.status(401).send("비밀번호가 틀렸습니다.");
+    if (err) {
+      console.error(err);
+      return next(err);
     }
-  } catch (error) {
-    console.error(error);
-    next();
-  }
+    if (info) {
+      return res.status(401).send(info.reason);
+    }
+    return req.login(user, async (loginErr) => {
+      if (loginErr) {
+        console.error(loginErr);
+        return next(loginErr);
+      }
+      const fullUserWithoutPassword = await User.findOne({
+        where: { id: user.id },
+        attributes: {
+          exclude: ["admin_pw"],
+        },
+      });
+      return res.status(200).json(fullUserWithoutPassword);
+    });
+  })(req, res, next);
 });
 
 router.post("/checkId", isNotLoggedIn, async (req, res, next) => {

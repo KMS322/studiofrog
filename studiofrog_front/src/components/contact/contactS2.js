@@ -1,7 +1,37 @@
+import React, { useEffect, useRef } from "react";
 const ContactS2 = () => {
+  const tagRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowWidth = window.innerWidth;
+      let triggerPosition;
+
+      if (windowWidth <= 500) {
+        triggerPosition = (90 * windowWidth) / 100; // 90vw in pixels
+      } else {
+        triggerPosition = (10 * windowWidth) / 100; // 120vw in pixels
+      }
+
+      if (
+        scrollPosition >= triggerPosition &&
+        tagRef.current &&
+        tagRef.current
+      ) {
+        tagRef.current.classList.add("animate1");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
-      <div className="contact_s2">
+      <div className="contact_s2" ref={tagRef}>
         <p>찾아오시는 길</p>
         <p>대구광역시 동구 경안로 722 3층 STUDIOFROG</p>
         <div className="text_box_container">

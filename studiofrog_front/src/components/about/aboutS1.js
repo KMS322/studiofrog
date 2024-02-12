@@ -42,7 +42,6 @@ const AboutS1 = () => {
           videoId={aboutList && aboutList.length && aboutList.file_id}
           opts={{
             playerVars: {
-              autoplay: 1,
               rel: 0,
               modestbranding: 1,
               controls: 0,

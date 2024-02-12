@@ -70,12 +70,41 @@
   font-size: 1.04vw;
   font-weight: 700;
   line-height: 2vw;
+  opacity: 0;
 }
+.about_s2 .animate1 {
+  animation: slideUp 2s ease forwards;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .about_s2 .article_container {
   width: 100%;
   height: 62.17%;
   margin-top: 1.82vw;
   border-top: 1px solid #d4d4d4;
+  opacity: 0;
+}
+.about_s2 .animate2 {
+  animation: slideRight 2s ease forwards;
+}
+@keyframes slideRight {
+  from {
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 .about_s2 .article_container .article {
   width: 100%;

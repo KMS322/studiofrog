@@ -276,51 +276,21 @@ const ContactS1 = () => {
             </div>
           </div>
         </div>
-        <div className="sub_container">
-          <div className="file_box">
-            <p>레퍼런스</p>
-            <label for="file">
-              <div class="upload_btn">
-                <img src="/images/clip.png" alt="" />
-                <p>
-                  &nbsp;{selectedFileName || "파일첨부, 링크첨부 (최대20MB)"}
-                </p>
-              </div>
-            </label>
-            <input
-              id="file"
-              name="file"
-              type="file"
-              onChange={handleFileChange}
-            />
-          </div>
-          <div className="textarea_box">
-            <p>
-              상담내용 <sup>*</sup>
-            </p>
-            <textarea
-              type="text"
-              name="content"
-              value={content}
-              onChange={(e) => {
-                handleInput(e, "content");
-              }}
-            />
-            <img
-              src="/images/unChecked_btn.png"
-              alt=""
-              onClick={() => {
-                setCheck(!check);
-              }}
-            />
+        <div className="check_box">
+          <img
+            src="/images/unChecked_btn.png"
+            alt=""
+            onClick={() => {
+              setCheck(!check);
+            }}
+          />
 
-            <p>
-              <u>개인정보수집</u>에 동의합니다.
-            </p>
-          </div>
-          <div className="submit_btn" onClick={sendForm}>
-            문의하기
-          </div>
+          <p>
+            <u>개인정보수집</u>에 동의합니다.
+          </p>
+        </div>
+        <div className="submit_btn" onClick={sendForm}>
+          문의하기
         </div>
       </div>
       {modalOpen && <Modal data={modalMsg} />}
