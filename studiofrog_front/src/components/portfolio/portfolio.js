@@ -39,10 +39,8 @@ const Portfolio = () => {
   const handleMore = () => {
     let plusCnt = videoCnt;
     if (videoCnt >= portfolioLists.length || videoCnt + 6 >= portfolioLists) {
-      console.log("AA");
       plusCnt = videoCnt;
     } else {
-      console.log("BB");
       plusCnt += 6;
       if (plusCnt > portfolioLists.length) {
         setShowMoreBtn(false);

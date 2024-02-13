@@ -30,18 +30,25 @@ const MainS5 = () => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowWidth = window.innerWidth;
-      let triggerPosition;
       let triggerPosition1;
+      let triggerPosition2;
+      let triggerPosition3;
+      let triggerPosition4;
 
-      if (windowWidth <= 500) {
-        triggerPosition = (90 * windowWidth) / 100; // 90vw in pixels
+      if (windowWidth <= 550) {
+        triggerPosition1 = (360 * windowWidth) / 100;
+        triggerPosition2 = (380 * windowWidth) / 100;
+        triggerPosition3 = (380 * windowWidth) / 100;
+        triggerPosition4 = (420 * windowWidth) / 100;
       } else {
-        triggerPosition = (160 * windowWidth) / 100; // 120vw in pixels
-        triggerPosition1 = (180 * windowWidth) / 100; // 120vw in pixels
+        triggerPosition1 = (140 * windowWidth) / 100;
+        triggerPosition2 = (140 * windowWidth) / 100;
+        triggerPosition3 = (140 * windowWidth) / 100;
+        triggerPosition4 = (170 * windowWidth) / 100;
       }
 
       if (
-        scrollPosition >= triggerPosition &&
+        scrollPosition >= triggerPosition1 &&
         tagRef1.current &&
         tagRef1.current
       ) {
@@ -50,7 +57,21 @@ const MainS5 = () => {
         tagRef3.current.classList.add("animate2");
       }
       if (
-        scrollPosition >= triggerPosition1 &&
+        scrollPosition >= triggerPosition2 &&
+        tagRef2.current &&
+        tagRef2.current
+      ) {
+        tagRef2.current.classList.add("animate2");
+      }
+      if (
+        scrollPosition >= triggerPosition3 &&
+        tagRef3.current &&
+        tagRef3.current
+      ) {
+        tagRef3.current.classList.add("animate2");
+      }
+      if (
+        scrollPosition >= triggerPosition4 &&
         tagRef4.current &&
         tagRef4.current
       ) {

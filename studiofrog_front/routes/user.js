@@ -47,13 +47,14 @@ router.post("/signup", isNotLoggedIn, async (req, res, next) => {
 
 router.post("/login", isNotLoggedIn, async (req, res, next) => {
   try {
-    console.log("req.body : ", req.body);
-
     const user = await User.findOne({
       where: {
         admin_id: req.body.adminId,
       },
     });
+    if (!user) {
+      res.status(300).send("등록된 아이디가 아닙니다.");
+    }
     const result = await bcrypt.compare(req.body.adminPw, user.admin_pw);
     if (result) {
       res.status(200).json(user);

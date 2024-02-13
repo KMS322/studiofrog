@@ -9,12 +9,12 @@ const MainS3 = () => {
       let triggerPosition1;
       let triggerPosition2;
 
-      if (windowWidth <= 500) {
-        triggerPosition1 = (90 * windowWidth) / 100; // 90vw in pixels
-        triggerPosition2 = (700 * windowWidth) / 100; // 130vw in pixels
+      if (windowWidth <= 550) {
+        triggerPosition1 = (40 * windowWidth) / 100;
+        triggerPosition2 = (320 * windowWidth) / 100;
       } else {
-        triggerPosition1 = (80 * windowWidth) / 100; // 120vw in pixels
-        triggerPosition2 = triggerPosition1; // tagRef2 will be animated at the same scroll position as tagRef1
+        triggerPosition1 = (75 * windowWidth) / 100;
+        triggerPosition2 = triggerPosition1;
       }
 
       if (

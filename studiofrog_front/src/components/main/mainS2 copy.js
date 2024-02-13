@@ -6,10 +6,11 @@ const MainS2 = () => {
       const scrollPosition = window.scrollY;
       const windowWidth = window.innerWidth;
       let triggerPosition;
+
       if (windowWidth <= 550) {
-        triggerPosition = (40 * windowWidth) / 100;
+        triggerPosition = 0; // 90vw in pixels
       } else {
-        triggerPosition = (40 * windowWidth) / 100;
+        triggerPosition = (40 * windowWidth) / 100; // 120vw in pixels
       }
 
       if (

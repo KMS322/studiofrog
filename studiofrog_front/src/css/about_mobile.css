@@ -26,6 +26,10 @@
   .about_s1 .text_box .change_box p {
     font-size: 12vw;
   }
+  .about_s1 .video_box {
+    width: 100vw;
+    height: 56.25vw;
+  }
   .about_s1 .video_box img {
     margin-top: 10vw;
   }

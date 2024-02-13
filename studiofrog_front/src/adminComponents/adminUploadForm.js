@@ -30,6 +30,18 @@ const AdminUploadForm = ({ handlePopup }) => {
 
   const sendData = async (e) => {
     e.preventDefault();
+    for (let i = 0; i < urls.length; i++) {
+      if (!urls[i]) {
+        alert(`${i + 1}번째 URL을 입력해주세요.`);
+        return;
+      }
+      const videoId = urls[i].match(/[?&]v=([^&]+)/)[1];
+      console.log("videoId : ", videoId);
+      if (!videoId) {
+        alert(`${i + 1}번째 URL을 확인해주세요.`);
+        return;
+      }
+    }
 
     dispatch({
       type: ADD_LISTS_REQUEST,
