@@ -7,9 +7,13 @@ import axios from "axios";
 const ContactS1 = () => {
   const dispatch = useDispatch();
   const { sendEmailDone } = useSelector((state) => state.contact);
+  const [projectPurpose, setProjectPurpose] = useState("");
+  const [projectName, setProjectName] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [name, setName] = useState("");
   const [tel, setTel] = useState("");
   const [email, setEmail] = useState("");
+  const [budget, setBudget] = useState("");
   const [period, setPeriod] = useState("");
   const [file, setFile] = useState(null);
   const [filePath, setFilePath] = useState("");
@@ -41,12 +45,20 @@ const ContactS1 = () => {
   }, [modalOpen, modalMsg]);
 
   const handleInput = (e, inputType) => {
-    if (inputType === "companyName") {
+    if (inputType === "projectPurpose") {
+      setProjectPurpose(e.target.value);
+    } else if (inputType === "projectName") {
+      setProjectName(e.target.value);
+    } else if (inputType === "companyName") {
       setCompanyName(e.target.value);
+    } else if (inputType === "name") {
+      setName(e.target.value);
     } else if (inputType === "tel") {
       setTel(e.target.value);
     } else if (inputType === "email") {
       setEmail(e.target.value);
+    } else if (inputType === "budget") {
+      setBudget(e.target.value);
     } else if (inputType === "period") {
       setPeriod(e.target.value);
     } else if (inputType === "content") {
@@ -72,7 +84,17 @@ const ContactS1 = () => {
           },
         });
       }
-      if (!companyName || !tel || !email || !period || !content) {
+      if (
+        !projectPurpose ||
+        !projectName ||
+        !companyName ||
+        !name ||
+        !tel ||
+        !email ||
+        !budget ||
+        !period ||
+        !content
+      ) {
         setModalMsg("fail");
         setModalOpen(true);
       } else if (!check) {
@@ -82,9 +104,13 @@ const ContactS1 = () => {
         dispatch({
           type: SEND_EMAIL_REQUEST,
           data: {
+            projectPurpose,
+            projectName,
             companyName,
+            name,
             tel,
             email,
+            budget,
             period,
             selectedFileName,
             content,
@@ -103,7 +129,47 @@ const ContactS1 = () => {
           <div className="sub_container">
             <div className="input_box">
               <p>
-                회사명 또는 성함 <sup>*</sup>
+                프로젝트 용도 <sup>*</sup>
+              </p>
+              <select
+                name="projectPurpose"
+                value={projectPurpose}
+                onChange={(e) => {
+                  handleInput(e, "projectPurpose");
+                }}
+                placeholder="선택해주세요."
+              >
+                <option value="" disabled>
+                  [필수] 선택해주세요.
+                </option>
+                <option value="option1">광고·홍보영상</option>
+                <option value="option2">업종별영상</option>
+                <option value="option3">제품영상</option>
+                <option value="option4">교육영상</option>
+                <option value="option5">행사영상</option>
+                <option value="option6">중계</option>
+                <option value="option7">온라인중계</option>
+                <option value="option8">항공촬영</option>
+                <option value="option9">CG</option>
+                <option value="option10">애니메이션</option>
+              </select>
+            </div>
+            <div className="input_box">
+              <p>
+                프로젝트 명 <sup>*</sup>
+              </p>
+              <input
+                type="text"
+                name="projectName"
+                value={projectName}
+                onChange={(e) => {
+                  handleInput(e, "projectName");
+                }}
+              />
+            </div>
+            <div className="input_box">
+              <p>
+                회사명 <sup>*</sup>
               </p>
               <input
                 type="text"
@@ -111,6 +177,19 @@ const ContactS1 = () => {
                 value={companyName}
                 onChange={(e) => {
                   handleInput(e, "companyName");
+                }}
+              />
+            </div>
+            <div className="input_box">
+              <p>
+                당담자 성함 및 직함 <sup>*</sup>
+              </p>
+              <input
+                type="text"
+                name="name"
+                value={name}
+                onChange={(e) => {
+                  handleInput(e, "name");
                 }}
               />
             </div>
@@ -142,7 +221,20 @@ const ContactS1 = () => {
             </div>
             <div className="input_box">
               <p>
-                일정 <sup>*</sup>
+                제작예산 <sup>*</sup>
+              </p>
+              <input
+                type="text"
+                name="budget"
+                value={budget}
+                onChange={(e) => {
+                  handleInput(e, "budget");
+                }}
+              />
+            </div>
+            <div className="input_box">
+              <p>
+                제작일정 <sup>*</sup>
               </p>
               <input
                 type="text"
