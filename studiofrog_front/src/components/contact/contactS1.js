@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SEND_EMAIL_REQUEST } from "../../reducers/contact";
+import { SEND_KAKAO_REQUEST } from "../../reducers/kakao";
+
 import Modal from "./modal";
 import axios from "axios";
 
@@ -79,17 +81,31 @@ const ContactS1 = () => {
         setModalMsg("unChecked");
         setModalOpen(true);
       } else {
-        dispatch({
-          type: SEND_EMAIL_REQUEST,
-          data: {
-            companyName,
-            tel,
-            email,
-            period,
-            selectedFileName,
-            content,
+        // dispatch({
+        //   type: SEND_EMAIL_REQUEST,
+        //   data: {
+        //     companyName,
+        //     tel,
+        //     email,
+        //     period,
+        //     selectedFileName,
+        //     content,
+        //   },
+        // });
+        dispatch(
+          {
+            type: SEND_KAKAO_REQUEST,
+            data: {
+              companyName,
+              tel,
+              email,
+              period,
+              selectedFileName,
+              content,
+            },
           },
-        });
+          [companyName, tel, email, period, selectedFileName, content]
+        );
       }
     } catch (error) {
       console.error("Error sending form:", error);
@@ -185,7 +201,9 @@ const ContactS1 = () => {
         </div>
         <div className="check_box">
           <img
-            src="/images/unChecked_btn.png"
+            src={
+              check ? "/images/checked_btn.png" : "/images/unChecked_btn.png"
+            }
             alt=""
             onClick={() => {
               setCheck(!check);

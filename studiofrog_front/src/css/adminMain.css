@@ -1,4 +1,31 @@
 /* adminMain */
+.kakao_btn {
+  width: 5vw;
+  height: 2vw;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 8vw;
+  left: 6.5vw;
+}
+.file_delete_btn {
+  width: 5vw;
+  height: 2vw;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  font-size: 0.7vw;
+  top: 8vw;
+  left: 0.5vw;
+}
+
 .adminMain {
   width: 88.85%;
   height: auto;

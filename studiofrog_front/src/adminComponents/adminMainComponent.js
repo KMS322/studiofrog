@@ -8,8 +8,13 @@ import {
   CHANGE_MAIN_REQUEST,
   CHANGE_ABOUT_REQUEST,
 } from "../reducers/videoList";
+import { DELETE_FILE_REQUEST } from "../reducers/contact";
+
+import { LOAD_KAKAO_REQUEST } from "../reducers/kakao";
+
 import UploadForm from "./adminUploadForm";
 import Loading from "./loading";
+import { API_URL } from "../constants";
 const AdminMainComponent = () => {
   const location = useLocation();
   const me = location.state && location.state.me;
@@ -18,10 +23,16 @@ const AdminMainComponent = () => {
   const [aboutUrl, setAboutUrl] = useState("");
   const [mainChange, setMainChange] = useState(false);
   const [aboutChange, setAboutChange] = useState(false);
+  const { kakao } = useSelector((state) => state.kakao);
   const [openLoading, setOpenLoading] = useState(false);
   const [loadingMsg, setLoadingMsg] = useState("loading");
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch({
+      type: LOAD_KAKAO_REQUEST,
+    });
+  }, []);
   const {
     lists,
     addListsDone,
@@ -30,6 +41,7 @@ const AdminMainComponent = () => {
     addListsLoading,
     deleteListDone,
   } = useSelector((state) => state.videoList);
+  const { deleteFileDone } = useSelector((state) => state.contact);
   const mainList = lists && lists.filter((list) => list.type === "main");
   const aboutList = lists && lists.filter((list) => list.type === "about");
   const portfolioLists =
@@ -39,6 +51,11 @@ const AdminMainComponent = () => {
       window.location.href = "/adminMain";
     }
   }, [deleteListDone]);
+  useEffect(() => {
+    if (deleteFileDone) {
+      window.location.href = "/adminMain";
+    }
+  }, [deleteFileDone]);
   useEffect(() => {
     setMainChange(
       !lists || lists.filter((list) => list.type === "main").length === 0
@@ -105,8 +122,25 @@ const AdminMainComponent = () => {
       return () => clearTimeout(timeoutId);
     }
   }, [addListsLoading]);
+  const deleteFile = () => {
+    dispatch({
+      type: DELETE_FILE_REQUEST,
+    });
+  };
   return (
     <>
+      {kakao && kakao ? (
+        <div className="kakao_btn">
+          <a href={`${API_URL}/kakao/authorize?scope=talk_message`}>코드발급</a>
+        </div>
+      ) : (
+        <div className="kakao_btn">
+          <a href={`${API_URL}/kakao/authorize?scope=talk_message`}>코드발급</a>
+        </div>
+      )}
+      <div className="file_delete_btn" onClick={deleteFile}>
+        첨부파일삭제
+      </div>
       {me && me === "admin" ? (
         <div className="adminMain">
           <div className="upload_btn">

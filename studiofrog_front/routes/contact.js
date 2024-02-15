@@ -10,7 +10,6 @@ const folderPath = path.join(__dirname, "public", "contactFiles");
 var Storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, folderPath);
-    console.log("multer가 실행");
   },
   filename: function (req, file, callback) {
     callback(null, file.originalname);
@@ -48,13 +47,9 @@ router.post("/", async (req, res, next) => {
       to: "kms930322@naver.com",
       subject: `STUDIOFROG WEB CONTACT By ${req.body.name}`,
       html: `<html><body>
-      <p>프로젝트 용도 : ${req.body.projectPurpose}</p>
-      <p>프로젝트 명 : ${req.body.projectName}</p>
-      <p>회사명 : ${req.body.companyName}</p>
-      <p>당담자 성함 및 직함 : ${req.body.name}</p>
+      <p>회사명 또는 성함 : ${req.body.companyName}</p>
       <p>전화번호 : ${req.body.tel}</p>
       <p>이메일 : ${req.body.email}</p>
-      <p>제작예산 : ${req.body.budget}</p>
       <p>제작일정 : ${req.body.period}</p>
       <p>상담내용 : ${req.body.content}</p>
       </body></html>`,
@@ -69,10 +64,37 @@ router.post("/", async (req, res, next) => {
       if (err) {
         console.error(err);
       } else {
-        console.log("Email Send " + info.response);
-        fs.unlinkSync(`public/contactFiles/${req.body.selectedFileName}`);
+        // fs.unlinkSync(`public/contactFiles/${req.body.selectedFileName}`);
         res.status(200).send("Email sended");
       }
+    });
+  } catch (error) {
+    console.error(error);
+    next();
+  }
+});
+
+const folderPath2 = path.join(__dirname, "..", "public", "contactFiles");
+router.post("/delete", async (req, res, next) => {
+  try {
+    fs.readdir(folderPath2, (err, files) => {
+      if (err) {
+        console.error("Error reading directory:", err);
+        return res.status(500).send("Internal Server Error");
+      }
+
+      files.forEach((file) => {
+        const filePath = path.join(folderPath2, file);
+        fs.unlink(filePath, (err) => {
+          if (err) {
+            console.error("Error deleting file:", err);
+          } else {
+            console.log("File deleted:", filePath);
+          }
+        });
+      });
+
+      res.status(200).send("deleted");
     });
   } catch (error) {
     console.error(error);
