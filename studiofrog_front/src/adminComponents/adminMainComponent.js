@@ -127,6 +127,7 @@ const AdminMainComponent = () => {
       type: DELETE_FILE_REQUEST,
     });
   };
+  console.log("kakao : ", kakao);
   return (
     <>
       {kakao && kakao ? (
