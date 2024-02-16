@@ -6,7 +6,9 @@ const fs = require("fs");
 const path = require("path");
 
 const folderPath = path.join(__dirname, "public", "contactFiles");
-
+if (!fs.existsSync(folderPath)) {
+  fs.mkdirSync(folderPath);
+}
 var Storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, folderPath);

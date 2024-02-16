@@ -81,17 +81,17 @@ const ContactS1 = () => {
         setModalMsg("unChecked");
         setModalOpen(true);
       } else {
-        // dispatch({
-        //   type: SEND_EMAIL_REQUEST,
-        //   data: {
-        //     companyName,
-        //     tel,
-        //     email,
-        //     period,
-        //     selectedFileName,
-        //     content,
-        //   },
-        // });
+        dispatch({
+          type: SEND_EMAIL_REQUEST,
+          data: {
+            companyName,
+            tel,
+            email,
+            period,
+            selectedFileName,
+            content,
+          },
+        });
         dispatch(
           {
             type: SEND_KAKAO_REQUEST,
