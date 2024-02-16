@@ -6,8 +6,10 @@ const fs = require("fs");
 const path = require("path");
 
 const folderPath = path.join(__dirname, "public", "contactFiles");
-if (!fs.existsSync(folderPath)) {
-  fs.mkdirSync(folderPath);
+const folderPath2 = path.join(__dirname, "..", "public", "contactFiles");
+
+if (!fs.existsSync(folderPath2)) {
+  fs.mkdirSync(folderPath2);
 }
 var Storage = multer.diskStorage({
   destination: function (req, file, callback) {
@@ -76,7 +78,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-const folderPath2 = path.join(__dirname, "..", "public", "contactFiles");
 router.post("/delete", async (req, res, next) => {
   try {
     fs.readdir(folderPath2, (err, files) => {
