@@ -1,0 +1,15 @@
+/* contactFiles */
+.files {
+  width: 100%;
+  height: 100vw;
+  margin-top: 7vw;
+}
+.files img {
+  margin-left: 10vw;
+  width: 50%;
+  height: fit-content;
+}
+.files embed {
+  width: 100%;
+  height: 100%;
+}

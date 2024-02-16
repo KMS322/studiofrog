@@ -14,6 +14,7 @@ import Contact from "./components/contact/contact";
 import Admin from "./adminComponents/admin.js";
 import AdminLogin from "./adminComponents/adminLogin.js";
 import AdminSignup from "./adminComponents/adminSignup.js";
+import Files from "./adminComponents/files.js";
 function App() {
   const dispatch = useDispatch();
   const { lists } = useSelector((state) => state.videoList);
@@ -40,6 +41,7 @@ function App() {
         <Route path="/adminMain" element={<Admin />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/files/:id" element={<Files />} />
       </Routes>
       <Footer />
     </>

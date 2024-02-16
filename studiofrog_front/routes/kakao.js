@@ -119,7 +119,7 @@ router.post("/message", async (req, res, next) => {
       req.body.content
     }\n${
       req.body.selectedFileName
-        ? `첨부파일 : ${API_URL_WITHOUT_PORT}/contactFiles/${req.body.selectedFileName}`
+        ? `첨부파일 : ${API_URL_WITHOUT_PORT}/files/${req.body.selectedFileName}`
         : "첨부 파일 없음"
     }`;
     const param = qs.stringify({
