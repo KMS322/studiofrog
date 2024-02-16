@@ -131,9 +131,7 @@ const AdminMainComponent = () => {
   return (
     <>
       {kakao && kakao ? (
-        <div className="kakao_btn">
-          <a href={`${API_URL}/kakao/authorize?scope=talk_message`}>코드발급</a>
-        </div>
+        ""
       ) : (
         <div className="kakao_btn">
           <a href={`${API_URL}/kakao/authorize?scope=talk_message`}>코드발급</a>
