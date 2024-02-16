@@ -47,9 +47,9 @@ router.post("/", async (req, res, next) => {
     });
 
     const mailOptions = {
-      from: req.body.name,
+      from: req.body.companyName,
       to: "kms930322@naver.com",
-      subject: `STUDIOFROG WEB CONTACT By ${req.body.name}`,
+      subject: `STUDIOFROG WEB CONTACT By ${req.body.companyName}`,
       html: `<html><body>
       <p>회사명 또는 성함 : ${req.body.companyName}</p>
       <p>전화번호 : ${req.body.tel}</p>
@@ -59,7 +59,6 @@ router.post("/", async (req, res, next) => {
       </body></html>`,
       attachments: [
         {
-          // path: `public/contactFiles/${req.body.selectedFileName}`,
           path: `${
             req.body.selectedFileName
               ? `public/contactFiles/${req.body.selectedFileName}`
