@@ -59,7 +59,12 @@ router.post("/", async (req, res, next) => {
       </body></html>`,
       attachments: [
         {
-          path: `public/contactFiles/${req.body.selectedFileName}`,
+          // path: `public/contactFiles/${req.body.selectedFileName}`,
+          path: `${
+            req.body.selectedFileName
+              ? `public/contactFiles/${req.body.selectedFileName}`
+              : ""
+          }`,
         },
       ],
     };
