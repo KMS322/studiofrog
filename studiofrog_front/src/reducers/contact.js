@@ -27,7 +27,7 @@ const reducer = (state = initialState, action) => {
         break;
       case SEND_EMAIL_SUCCESS:
         draft.sendEmailLoading = false;
-        draft.sendEmailDone = true;
+        draft.sendEmailDone = action.data;
         break;
       case SEND_EMAIL_FAILURE:
         draft.sendEmailLoading = false;
