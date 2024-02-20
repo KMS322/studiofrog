@@ -60,7 +60,6 @@ router.post("/", async (req, res, next) => {
         <p>상담내용 : ${req.body.content}</p>
       </body></html>`,
     };
-
     if (req.body.selectedFileName) {
       mailOptions.attachments = [
         {
@@ -73,7 +72,9 @@ router.post("/", async (req, res, next) => {
       if (err) {
         console.error(err);
       } else {
-        fs.unlinkSync(`public/contactFiles/${req.body.selectedFileName}`);
+        if (req.body.selectedFileName) {
+          fs.unlinkSync(`public/contactFiles/${req.body.selectedFileName}`);
+        }
         res.status(200).send("Email sended");
       }
     });

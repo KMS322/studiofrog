@@ -22,7 +22,6 @@ const ContactS1 = () => {
   const [check, setCheck] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
-  console.log("sendEmailDone : ", sendEmailDone);
   useEffect(() => {
     if (sendEmailDone) {
       setModalMsg("success");
@@ -48,8 +47,6 @@ const ContactS1 = () => {
     if (sendEmailLoading) {
       setModalMsg("loading");
       setModalOpen(true);
-    } else {
-      setModalOpen(false);
     }
   }, [sendEmailLoading]);
 
