@@ -48,7 +48,7 @@ router.post("/", async (req, res, next) => {
 
     const mailOptions = {
       from: req.body.companyName,
-      to: "kms930322@naver.com",
+      to: "studioofrog@gmail.com",
       subject: `STUDIOFROG WEB CONTACT By ${req.body.companyName}`,
       html: `<html><body>
         <p>회사명 또는 성함 : ${req.body.companyName}</p>
