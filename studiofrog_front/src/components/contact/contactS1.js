@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SEND_EMAIL_REQUEST } from "../../reducers/contact";
-import { SEND_KAKAO_REQUEST } from "../../reducers/kakao";
 
 import Modal from "./modal";
 import axios from "axios";
@@ -100,20 +99,6 @@ const ContactS1 = () => {
             content,
           },
         });
-        // dispatch(
-        //   {
-        //     type: SEND_KAKAO_REQUEST,
-        //     data: {
-        //       companyName,
-        //       tel,
-        //       email,
-        //       period,
-        //       selectedFileName,
-        //       content,
-        //     },
-        //   },
-        //   [companyName, tel, email, period, selectedFileName, content]
-        // );
       }
     } catch (error) {
       console.error("Error sending form:", error);

@@ -9,9 +9,6 @@ import {
   CHANGE_ABOUT_REQUEST,
 } from "../reducers/videoList";
 import { DELETE_FILE_REQUEST } from "../reducers/contact";
-
-import { LOAD_KAKAO_REQUEST } from "../reducers/kakao";
-
 import UploadForm from "./adminUploadForm";
 import Loading from "./loading";
 import { API_URL } from "../constants";
@@ -23,16 +20,10 @@ const AdminMainComponent = () => {
   const [aboutUrl, setAboutUrl] = useState("");
   const [mainChange, setMainChange] = useState(false);
   const [aboutChange, setAboutChange] = useState(false);
-  const { kakao } = useSelector((state) => state.kakao);
   const [openLoading, setOpenLoading] = useState(false);
   const [loadingMsg, setLoadingMsg] = useState("loading");
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch({
-      type: LOAD_KAKAO_REQUEST,
-    });
-  }, []);
   const {
     lists,
     addListsDone,
@@ -127,16 +118,8 @@ const AdminMainComponent = () => {
       type: DELETE_FILE_REQUEST,
     });
   };
-  console.log("kakao : ", kakao);
   return (
     <>
-      {kakao && kakao ? (
-        ""
-      ) : (
-        <div className="kakao_btn">
-          <a href={`${API_URL}/kakao/authorize?scope=talk_message`}>코드발급</a>
-        </div>
-      )}
       <div className="file_delete_btn" onClick={deleteFile}>
         첨부파일삭제
       </div>

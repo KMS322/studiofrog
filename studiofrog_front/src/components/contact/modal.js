@@ -1,7 +1,6 @@
 import "../../css/modal.css";
 
 const Modal = ({ data }) => {
-  console.log("data : ", data);
   return (
     <div className="modal">
       {data === "success" ? (
