@@ -22,7 +22,7 @@ const ContactS1 = () => {
   const [check, setCheck] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
-
+  console.log("sendEmailDone : ", sendEmailDone);
   useEffect(() => {
     if (sendEmailDone) {
       setModalMsg("success");
@@ -31,7 +31,7 @@ const ContactS1 = () => {
   }, [sendEmailDone]);
 
   useEffect(() => {
-    if (modalOpen && modalMsg !== "loading") {
+    if (modalOpen && modalMsg === "success") {
       const timeoutId = setTimeout(() => {
         setModalOpen(false);
 

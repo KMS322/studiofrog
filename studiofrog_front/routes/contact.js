@@ -53,22 +53,21 @@ router.post("/", async (req, res, next) => {
       to: "kms930322@naver.com",
       subject: `STUDIOFROG WEB CONTACT By ${req.body.companyName}`,
       html: `<html><body>
-      <p>회사명 또는 성함 : ${req.body.companyName}</p>
-      <p>전화번호 : ${req.body.tel}</p>
-      <p>이메일 : ${req.body.email}</p>
-      <p>제작일정 : ${req.body.period}</p>
-      <p>상담내용 : ${req.body.content}</p>
+        <p>회사명 또는 성함 : ${req.body.companyName}</p>
+        <p>전화번호 : ${req.body.tel}</p>
+        <p>이메일 : ${req.body.email}</p>
+        <p>제작일정 : ${req.body.period}</p>
+        <p>상담내용 : ${req.body.content}</p>
       </body></html>`,
-      attachments: [
-        {
-          path: `${
-            req.body.selectedFileName
-              ? `public/contactFiles/${req.body.selectedFileName}`
-              : ""
-          }`,
-        },
-      ],
     };
+
+    if (req.body.selectedFileName) {
+      mailOptions.attachments = [
+        {
+          path: `public/contactFiles/${req.body.selectedFileName}`,
+        },
+      ];
+    }
 
     transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
