@@ -31,7 +31,7 @@ const ContactS1 = () => {
   }, [sendEmailDone]);
 
   useEffect(() => {
-    if (modalOpen) {
+    if (modalOpen && modalMsg !== "loading") {
       const timeoutId = setTimeout(() => {
         setModalOpen(false);
 
@@ -48,6 +48,8 @@ const ContactS1 = () => {
     if (sendEmailLoading) {
       setModalMsg("loading");
       setModalOpen(true);
+    } else {
+      setModalOpen(false);
     }
   }, [sendEmailLoading]);
 
