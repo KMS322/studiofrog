@@ -18,6 +18,14 @@ const Modal = ({ data }) => {
             항목을 기입하고 다시 시도해 주세요.
           </p>
         </>
+      ) : data === "loading" ? (
+        <>
+          <img src="/images/icon_fail.png" alt="" />
+          <p>
+            메일을 보내는 중 입니다. <br />
+            잠시만 기다려 주세요.
+          </p>
+        </>
       ) : (
         <>
           <img src="/images/icon_fail.png" alt="" />

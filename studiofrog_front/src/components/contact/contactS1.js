@@ -8,7 +8,9 @@ import axios from "axios";
 
 const ContactS1 = () => {
   const dispatch = useDispatch();
-  const { sendEmailDone } = useSelector((state) => state.contact);
+  const { sendEmailDone, sendEmailLoading } = useSelector(
+    (state) => state.contact
+  );
   const [companyName, setCompanyName] = useState("");
   const [tel, setTel] = useState("");
   const [email, setEmail] = useState("");
@@ -41,6 +43,13 @@ const ContactS1 = () => {
       return () => clearTimeout(timeoutId);
     }
   }, [modalOpen, modalMsg]);
+
+  useEffect(() => {
+    if (sendEmailLoading) {
+      setModalMsg("loading");
+      setModalOpen(true);
+    }
+  }, [sendEmailLoading]);
 
   const handleInput = (e, inputType) => {
     if (inputType === "companyName") {
@@ -92,20 +101,20 @@ const ContactS1 = () => {
             content,
           },
         });
-        dispatch(
-          {
-            type: SEND_KAKAO_REQUEST,
-            data: {
-              companyName,
-              tel,
-              email,
-              period,
-              selectedFileName,
-              content,
-            },
-          },
-          [companyName, tel, email, period, selectedFileName, content]
-        );
+        // dispatch(
+        //   {
+        //     type: SEND_KAKAO_REQUEST,
+        //     data: {
+        //       companyName,
+        //       tel,
+        //       email,
+        //       period,
+        //       selectedFileName,
+        //       content,
+        //     },
+        //   },
+        //   [companyName, tel, email, period, selectedFileName, content]
+        // );
       }
     } catch (error) {
       console.error("Error sending form:", error);
