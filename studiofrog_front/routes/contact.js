@@ -40,8 +40,8 @@ router.post("/", async (req, res, next) => {
       auth: {
         user: "creamoff2021@gmail.com",
         pass: "ktdldgctfcczdfmy",
-        // user: "studioofrog@gmail.com",
-        // pass: "meaxttqwhmrgcmel",
+        user: "studioofrog@gmail.com",
+        pass: "meaxttqwhmrgcmel",
       },
       tls: {
         rejectUnauthorized: false,
