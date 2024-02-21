@@ -9,9 +9,9 @@ const AboutS2 = () => {
       let triggerPosition;
 
       if (windowWidth <= 500) {
-        triggerPosition = (90 * windowWidth) / 100; // 90vw in pixels
+        triggerPosition = (90 * windowWidth) / 100;
       } else {
-        triggerPosition = (40 * windowWidth) / 100; // 120vw in pixels
+        triggerPosition = (40 * windowWidth) / 100;
       }
 
       if (

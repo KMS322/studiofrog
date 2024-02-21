@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const { User } = require("../models");
-const { isLoggedIn, isNotLoggedIn } = require("./middlewares");
+const { isNotLoggedIn } = require("./middlewares");
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
@@ -22,6 +22,7 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+
 router.post("/signup", isNotLoggedIn, async (req, res, next) => {
   try {
     const exUser = await User.findOne({
@@ -30,14 +31,15 @@ router.post("/signup", isNotLoggedIn, async (req, res, next) => {
       },
     });
     if (exUser) {
-      return res.status(403).send("이미 사용중인 아이디 입니다.");
+      return res.status(403).send("회원가입을 할 수 없습니다.");
+    } else {
+      const hashedPassword = await bcrypt.hash(req.body.adminPw, 12);
+      const createdUser = await User.create({
+        admin_id: req.body.adminId,
+        admin_pw: hashedPassword,
+      });
     }
-    const hashedPassword = await bcrypt.hash(req.body.adminPw, 12);
 
-    const createdUser = await User.create({
-      admin_id: req.body.adminId,
-      admin_pw: hashedPassword,
-    });
     res.status(201).send("ok");
   } catch (error) {
     console.error(error);
@@ -94,39 +96,6 @@ router.post("/checkId", isNotLoggedIn, async (req, res, next) => {
     console.error(error);
     next(error);
   }
-});
-
-router.post("/changePassword", isLoggedIn, async (req, res, next) => {
-  try {
-    const changeUser = await User.findOne({
-      where: {
-        id: req.body.userID,
-      },
-    });
-    console.log("changeUser : ", changeUser);
-    const currentPasswordMatch = await bcrypt.compare(
-      req.body.user_currentPW,
-      changeUser.user_member_pw
-    );
-
-    if (!currentPasswordMatch) {
-      return res.status(401).send("현재 비밀번호가 일치하지 않습니다.");
-    }
-    const hashedNewPassword = await bcrypt.hash(req.body.changePassword, 12);
-    changeUser.user_member_pw = hashedNewPassword;
-    await changeUser.save();
-
-    res.status(200).send("비밀번호가 성공적으로 변경되었습니다.");
-  } catch (error) {
-    console.error(error);
-    next(error);
-  }
-});
-router.post("/logout", isLoggedIn, (req, res) => {
-  req.logout(() => {
-    // res.redirect("/");
-  });
-  res.status(201).send("ok");
 });
 
 module.exports = router;

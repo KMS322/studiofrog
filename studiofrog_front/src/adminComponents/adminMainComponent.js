@@ -11,7 +11,6 @@ import {
 import { DELETE_FILE_REQUEST } from "../reducers/contact";
 import UploadForm from "./adminUploadForm";
 import Loading from "./loading";
-import { API_URL } from "../constants";
 const AdminMainComponent = () => {
   const location = useLocation();
   const me = location.state && location.state.me;

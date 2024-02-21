@@ -2,7 +2,7 @@ import "./App.css";
 import "./css/fonts.css";
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { LOAD_LISTS_REQUEST } from "./reducers/videoList.js";
 import ScrollToTop from "./scrollToTop";
 import Header from "./components/header";
@@ -17,7 +17,6 @@ import AdminSignup from "./adminComponents/adminSignup.js";
 import Files from "./adminComponents/files.js";
 function App() {
   const dispatch = useDispatch();
-  const { lists } = useSelector((state) => state.videoList);
   const [currentPage, setCurrentPage] = useState();
   const location = useLocation();
   useEffect(() => {

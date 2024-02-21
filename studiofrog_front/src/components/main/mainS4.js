@@ -13,9 +13,9 @@ const MainS4 = () => {
       let triggerPosition;
 
       if (windowWidth <= 550) {
-        triggerPosition = (340 * windowWidth) / 100; // 90vw in pixels
+        triggerPosition = (340 * windowWidth) / 100;
       } else {
-        triggerPosition = (120 * windowWidth) / 100; // 120vw in pixels
+        triggerPosition = (120 * windowWidth) / 100;
       }
 
       if (

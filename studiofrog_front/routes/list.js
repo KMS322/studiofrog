@@ -2,11 +2,8 @@ const express = require("express");
 const multer = require("multer");
 const router = express.Router();
 const { VideoList } = require("../models");
-const fs = require("fs");
-const path = require("path");
 const cheerio = require("cheerio");
 const axios = require("axios");
-// const puppeteer = require("puppeteer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
