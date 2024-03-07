@@ -119,9 +119,9 @@ const AdminMainComponent = () => {
   };
   return (
     <>
-      <div className="file_delete_btn" onClick={deleteFile}>
+      {/* <div className="file_delete_btn" onClick={deleteFile}>
         첨부파일삭제
-      </div>
+      </div> */}
       {me && me === "studiofrog95" ? (
         <div className="adminMain">
           <div className="upload_btn">
