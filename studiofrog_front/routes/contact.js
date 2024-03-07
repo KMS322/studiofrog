@@ -35,11 +35,13 @@ router.post("/", async (req, res, next) => {
   try {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
-      port: 587,
+      port: 465,
       secure: false,
       auth: {
-        user: "sooljoo94@gmail.com",
-        pass: "ancdsehxwluuoili",
+        // user: "sooljoo94@gmail.com",
+        // pass: "ancdsehxwluuoili",
+        user: "creamoff2021@gmail.com",
+        pass: "ktdldgctfcczdfmy",
       },
       tls: {
         rejectUnauthorized: false,
@@ -48,7 +50,8 @@ router.post("/", async (req, res, next) => {
 
     const mailOptions = {
       from: req.body.companyName,
-      to: "studioofrog@gmail.com",
+      // to: "studioofrog@gmail.com",
+      to: "kms930322@naver.com",
       subject: `STUDIOFROG WEB CONTACT By ${req.body.companyName}`,
       html: `<html><body>
         <p>회사명 또는 성함 : ${req.body.companyName}</p>
