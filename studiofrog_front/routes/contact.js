@@ -38,10 +38,8 @@ router.post("/", async (req, res, next) => {
       port: 25,
       secure: false,
       auth: {
-        // user: "sooljoo94@gmail.com",
-        // pass: "ancdsehxwluuoili",
-        user: "creamoff2021@gmail.com",
-        pass: "ktdldgctfcczdfmy",
+        user: "sooljoo94@gmail.com",
+        pass: "ancdsehxwluuoili",
       },
       tls: {
         rejectUnauthorized: false,
@@ -50,8 +48,7 @@ router.post("/", async (req, res, next) => {
 
     const mailOptions = {
       from: req.body.companyName,
-      // to: "studioofrog@gmail.com",
-      to: "kms930322@naver.com",
+      to: "studioofrog@gmail.com",
       subject: `STUDIOFROG WEB CONTACT By ${req.body.companyName}`,
       html: `<html><body>
         <p>회사명 또는 성함 : ${req.body.companyName}</p>
