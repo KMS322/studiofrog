@@ -24,7 +24,7 @@ app.use(
     origin: [
       "http://localhost",
       "http://studiofrog.kr",
-      "http://211.110.229.116/",
+      "http://211.110.229.116",
     ],
     credentials: true,
   })
