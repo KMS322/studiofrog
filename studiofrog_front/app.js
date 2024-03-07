@@ -21,7 +21,11 @@ db.sequelize
 
 app.use(
   cors({
-    origin: ["http://localhost", "http://studiofrog.kr"],
+    origin: [
+      "http://localhost",
+      "http://studiofrog.kr",
+      "http://211.110.229.116/",
+    ],
     credentials: true,
   })
 );
