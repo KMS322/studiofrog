@@ -25,11 +25,7 @@ passportConfig();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost",
-      "http://studiofrog.kr",
-      "http://211.110.229.116",
-    ],
+    origin: ["http://localhost", "http://studiofrog.kr"],
     credentials: true,
   })
 );
