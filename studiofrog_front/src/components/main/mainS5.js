@@ -25,6 +25,7 @@ const MainS5 = () => {
   const tagRef2 = useRef(null);
   const tagRef3 = useRef(null);
   const tagRef4 = useRef(null);
+  const tagRef5 = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,17 +35,20 @@ const MainS5 = () => {
       let triggerPosition2;
       let triggerPosition3;
       let triggerPosition4;
+      let triggerPosition5;
 
       if (windowWidth <= 550) {
         triggerPosition1 = (360 * windowWidth) / 100;
         triggerPosition2 = (380 * windowWidth) / 100;
         triggerPosition3 = (380 * windowWidth) / 100;
         triggerPosition4 = (420 * windowWidth) / 100;
+        triggerPosition5 = (420 * windowWidth) / 100;
       } else {
         triggerPosition1 = (140 * windowWidth) / 100;
         triggerPosition2 = (140 * windowWidth) / 100;
         triggerPosition3 = (140 * windowWidth) / 100;
         triggerPosition4 = (170 * windowWidth) / 100;
+        triggerPosition5 = (140 * windowWidth) / 100;
       }
 
       if (
@@ -76,6 +80,14 @@ const MainS5 = () => {
         tagRef4.current
       ) {
         tagRef4.current.classList.add("animate3");
+        tagRef5.current.classList.add("animate4");
+      }
+      if (
+        scrollPosition >= triggerPosition5 &&
+        tagRef5.current &&
+        tagRef5.current
+      ) {
+        tagRef5.current.classList.add("animate4");
       }
     };
 
@@ -85,17 +97,25 @@ const MainS5 = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStartIndex((prevIndex) => (prevIndex + 5) % images.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
   return (
     <div className="main_s5">
       <div className="article_container">
-        <img src="/images/main_s5_img.jpg" alt="" />
+        <img src="/images/main_s5_img.jpg" alt="" ref={tagRef5} />
         <p ref={tagRef1}>클라이언트가 필요로 하는</p>
         <p ref={tagRef2}>영상 업무를 수행하는 회사</p>
         <p ref={tagRef3}>
           <span>스튜디오 프로그</span>입니다.
         </p>
         <div className="logo_box_container">
-          <img src="/images/left_btn.png" alt="" onClick={handleClickPrev} />
+          {/* <img src="/images/left_btn.png" alt="" onClick={handleClickPrev} /> */}
           <div className="logo_box">
             {images.slice(startIndex, startIndex + 5).map((image, index) => (
               <img
@@ -105,7 +125,7 @@ const MainS5 = () => {
               />
             ))}
           </div>
-          <img src="/images/right_btn.png" alt="" onClick={handleClickNext} />
+          {/* <img src="/images/right_btn.png" alt="" onClick={handleClickNext} /> */}
         </div>
         <div className="img_box">
           <img id="pc" src="/images/main_s5_img2.jpg" alt="" />

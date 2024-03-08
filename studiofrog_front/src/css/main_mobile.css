@@ -203,6 +203,10 @@
     font-size: 6vw;
     margin-top: 5vw;
   }
+  .main_s5 .article_container .logo_box_container {
+    width: 100%;
+    height: auto;
+  }
   .main_s5 .article_container .img_box {
     height: 60vw;
     margin-top: 20vw;

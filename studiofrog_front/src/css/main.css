@@ -225,7 +225,7 @@
   opacity: 0;
 }
 .main_s4 .animate1 {
-  animation: s4slideUp 3s ease forwards;
+  animation: s4slideUp 0.7s ease forwards;
 }
 @keyframes s4slideUp {
   from {
@@ -374,6 +374,18 @@
   position: absolute;
   top: 0;
   left: 52.14vw;
+  opacity: 0;
+}
+.main_s5 .article_container > .animate4 {
+  animation: s5fadeIn 1s ease forwards;
+}
+@keyframes s5fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .main_s5 p:nth-child(2) {
   width: 100%;
@@ -383,7 +395,7 @@
   opacity: 0;
 }
 .main_s5 .animate1 {
-  animation: s5slideRight 3s ease forwards;
+  animation: s5slideRight 0.7s ease forwards;
 }
 @keyframes s5slideRight {
   from {
@@ -414,7 +426,7 @@
   color: #8f63da;
 }
 .main_s5 .animate2 {
-  animation: s5slideUp1 4s ease forwards;
+  animation: s5slideUp1 0.7s ease forwards;
 }
 @keyframes s5slideUp1 {
   from {
@@ -442,6 +454,7 @@
 .main_s5 .article_container .logo_box_container .logo_box {
   width: 90.67%;
   height: 100%;
+  margin: 0 auto;
   overflow: hidden;
   display: flex;
   flex-wrap: wrap;
