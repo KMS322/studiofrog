@@ -122,7 +122,7 @@ const AdminMainComponent = () => {
       {/* <div className="file_delete_btn" onClick={deleteFile}>
         첨부파일삭제
       </div> */}
-      {me && me === "studiofrog95" ? (
+      {(me && me === "studiofrog95") || me === "admin" ? (
         <div className="adminMain">
           <div className="upload_btn">
             <p

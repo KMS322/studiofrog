@@ -62,6 +62,7 @@ const Header = ({ page }) => {
           <p
             onClick={() => {
               navigate("/about");
+              setOpenNav(false);
             }}
           >
             ABOUT
@@ -69,6 +70,7 @@ const Header = ({ page }) => {
           <p
             onClick={() => {
               navigate("/portfolio");
+              setOpenNav(false);
             }}
           >
             PORTFOLIO
@@ -79,6 +81,7 @@ const Header = ({ page }) => {
           <p
             onClick={() => {
               navigate("/contact");
+              setOpenNav(false);
             }}
           >
             CONTACT

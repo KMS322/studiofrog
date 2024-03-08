@@ -39,9 +39,10 @@ const AboutS1 = () => {
       </div>
       <div className="video_box">
         <YouTube
-          videoId={aboutList && aboutList.length && aboutList.file_id}
+          videoId={aboutList && aboutList.length > 0 && aboutList[0].file_id}
           opts={{
             playerVars: {
+              autoplay: 1,
               rel: 0,
               modestbranding: 1,
               controls: 0,
