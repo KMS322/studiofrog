@@ -1,11 +1,12 @@
 @media screen and (max-width: 500px) {
   /* main_s1 */
   .main_s1 {
-    height: 50vw;
+    height: 56.25vw;
   }
+
   /* main_s2 */
   .main_s2 {
-    height: 40vw;
+    height: 65vw;
   }
   .main_s2 p {
     font-size: 3.5vw;
@@ -25,38 +26,44 @@
     height: auto;
   }
   .main_s3 > .animate1 {
-    animation: moveRight 3s ease forwards;
+    animation: moveRight 0.7s ease forwards;
   }
+  .main_s3 > img {
+    width: 50%;
+    height: fit-content;
+  }
+
   @keyframes moveRight {
     from {
       left: 0;
     }
     to {
-      left: 87.5%;
+      /* left: 87.5%; */
+      left: 50%;
     }
   }
   .main_s3 > .animate2 {
-    animation: moveLeft 3s ease forwards;
+    animation: moveLeft 0.7s ease forwards;
   }
   @keyframes moveLeft {
     from {
       right: 0;
     }
     to {
-      right: 87.5%;
+      right: 50%;
     }
   }
   .main_s3 .article_container {
-    width: 90%;
+    width: 95%;
     height: auto;
-    margin-top: 10vw;
-    margin-bottom: 10vw;
+    margin-top: 50vw;
+    margin-bottom: 0vw;
     flex-direction: column;
   }
   .main_s3 .article_container .article {
     width: 100%;
     height: 110vw;
-    margin-bottom: 25vw;
+    margin-bottom: 50vw;
   }
   .main_s3 .article_container .article:hover {
     width: 100%;
@@ -82,6 +89,9 @@
     .text_box
     .title_box {
     width: 44%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .main_s3
     .article_container
@@ -100,6 +110,9 @@
     .text_box
     .content_box {
     width: 52%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .main_s3
     .article_container
@@ -111,9 +124,11 @@
     font-size: 2.5vw;
     margin-bottom: 2.5vw;
   }
+
   /* main_s4 */
   .main_s4 {
     height: auto;
+    margin-top: 50vw;
   }
   .main_s4 .article_container {
     width: 100%;
@@ -127,15 +142,24 @@
   }
   .main_s4 .article_container .article .text_box {
     margin-top: 15vw;
-    margin-left: 5%;
+    /* margin-left: 5%; */
   }
   .main_s4 .article_container .article .text_box p {
-    font-size: 3.5vw;
-    line-height: 7vw;
+    font-size: 10vw;
+    line-height: 15vw;
+    letter-spacing: -0.4vw;
+    text-align: center;
+  }
+  .main_s4 .article_container .article .text_box p:last-child {
+    font-size: 5.5vw;
+    line-height: 9.7vw;
+    margin-top: 25vw;
+    letter-spacing: -0.4vw;
   }
   .main_s4 .article_container .article .scroll_container {
-    height: 70vw;
+    height: auto;
     margin-top: 10vw;
+    margin-bottom: 10vw;
   }
   .main_s4
     .article_container
@@ -146,6 +170,15 @@
     width: 90vw;
     height: auto;
     margin-right: 3vw;
+  }
+  .main_s4
+    .article_container
+    .article
+    .scroll_container
+    .video_box_container
+    .video_box
+    div:nth-child(1) {
+    height: 50.625vw;
   }
   .main_s4
     .article_container
@@ -174,6 +207,7 @@
     .video_box
     p:nth-child(3) {
     font-size: 3.5vw;
+    margin-top: 3vw;
   }
   .main_s4 .article_container .article .scroll_container::-webkit-scrollbar {
     display: none;
@@ -181,11 +215,13 @@
   /* main_s5 */
   .main_s5 {
     height: auto;
+    margin-top: 60vw;
   }
   .main_s5 p:nth-child(2) {
-    font-size: 7vw;
+    font-size: 8.5vw;
     margin: 0;
     text-align: center;
+    letter-spacing: -0.5vw;
   }
   .main_s5 .article_container > img:nth-child(1) {
     width: 100%;
@@ -195,17 +231,24 @@
   }
   .main_s5 p:nth-child(3) {
     margin: 0;
-    margin-top: 85vw;
+    margin-top: 80vw;
     margin-left: 5%;
     font-size: 5vw;
+    letter-spacing: -0.4vw;
   }
   .main_s5 p:nth-child(4) {
     font-size: 6vw;
     margin-top: 5vw;
+    margin-right: 5%;
+    text-align: right;
   }
   .main_s5 .article_container .logo_box_container {
     width: 100%;
     height: auto;
+  }
+  .main_s5 .article_container .logo_box_container .logo_box {
+    margin-top: 20vw;
+    margin-bottom: 20vw;
   }
   .main_s5 .article_container .img_box {
     height: 60vw;

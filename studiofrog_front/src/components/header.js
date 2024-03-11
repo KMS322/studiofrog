@@ -90,7 +90,7 @@ const Header = ({ page }) => {
       ) : (
         ""
       )}
-      {openNav ? <div id="mobile" className="black"></div> : ""}
+      {/* {openNav ? <div id="mobile" className="black"></div> : ""} */}
     </div>
   );
 };

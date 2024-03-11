@@ -64,10 +64,18 @@ const MainS4 = () => {
         <img src="/images/left_btn.png" alt="" onClick={handleScrollLeft} />
         <div className="article">
           <div className="text_box" ref={tagRef}>
-            <p>
+            <p id="pc">
               <span>스튜디오 프로그</span>는 기획부터 편집까지
             </p>
-            <p>최고의 인력과 기획 능력을 통해 콘텐츠를 제공드립니다.</p>
+            <p id="pc">최고의 인력과 기획 능력을 통해 콘텐츠를 제공드립니다.</p>
+            <p id="mobile">
+              <span>스튜디오 프로그</span>는<br />
+              기획부터 편집까지
+            </p>
+            <p id="mobile">
+              최고의 인력과 기획 능력을
+              <br /> 통해 콘텐츠를 제공드립니다.
+            </p>
           </div>
           <div className="scroll_container" ref={scrollContainerRef}>
             <div className="video_box_container">
